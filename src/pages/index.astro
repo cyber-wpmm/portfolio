@@ -39,10 +39,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section id="about">
         <h2>About Me</h2>
         <div class="about-container">
-            <div class="about-content">
+            <div class="about-content fade-in">
                 <div class="about-text">
                     <p class="about-intro">
-                        Hi! I'm <span class="highlight">Win Phyo</span>, a passionate final-year Cybersecurity student at AUT, eager to apply my skills in network security and system administration developed through academic projects, CTF competitions, and hands-on practical labs. My collaborative experience in customer-oriented industries has strengthened my communication skills and ability to solve problems under pressure. <span class="about-sign">— Win Phyo</span>
+                    Hi! I'm <span class="highlight">Win Phyo</span>, a passionate final-year Cybersecurity student at AUT, eager to apply my skills in network security and system administration developed through academic projects, CTF competitions, and hands-on practical labs. My collaborative experience in customer-oriented industries has strengthened my communication skills and ability to solve problems under pressure. <span class="about-sign">— Win Phyo</span>
                     </p>
                     <div class="about-stats">
                         <div class="stat-item">
@@ -68,21 +68,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                             <span class="code-title">about.js</span>
                         </div>
                         <div class="code-content">
-                                                        <pre><code><span class="code-keyword">const</span> <span class="code-variable">securityAnalyst</span> &#61; &#123;
+                            <pre><code><span class="code-keyword">const</span> <span class="code-variable">securityAnalyst</span> &#61; &#123;
     <span class="code-property">name</span>&#58; <span class="code-string">"Win Phyo"</span>,
     <span class="code-property">role</span>&#58; <span class="code-string">"Cybersecurity Student"</span>,
     <span class="code-property">location</span>&#58; <span class="code-string">"Auckland, NZ"</span>,
     <span class="code-property">interests</span>&#58; [
-        <span class="code-string">"Network Security"</span>,
-        <span class="code-string">"Ethical Hacking"</span>,
-        <span class="code-string">"System Administration"</span>,
-        <span class="code-string">"CTF Competitions"</span>
+        <span class="code-string">"HackTheBox Meetups"</span>,
+        <span class="code-string">"ISIG Monthly Events"</span>,
+        <span class="code-string">"CTF Competitions"</span>,
     ],
     <span class="code-property">learning</span>&#58; [
         <span class="code-string">"Advanced Penetration Testing"</span>,
         <span class="code-string">"Cloud Security"</span>
     ],
-    <span class="code-property">funFact</span>&#58; <span class="code-string">"Home lab with Docker"</span>
+    <span class="code-property">funFact</span>&#58; <span class="code-string">"I go by chickenlittle"</span>
 &#125;&#59;</code></pre>
                         </div>
                     </div>
@@ -90,53 +89,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
         </div>
     </section>
-
+    
     <section id="skills">
         <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Networking</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Cisco Devices</span>
-                    <span class="skill-tag">VLANs</span>
-                    <span class="skill-tag">Dynamic Routing</span>
-                    <span class="skill-tag">Network Security</span>
-                    <span class="skill-tag">Access Control</span>
-                    <span class="skill-tag">NAT & DHCP</span>
-                </div>
+        <div class="skills-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1.5rem;">
+            <div class="skill-category" style="flex: 1 1 220px; min-width: 200px; background: #181c1f; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);">
+                <h3 style="margin-bottom: 0.7em; color: var(--accent-color, #00FF8C);">Networking</h3>
+                <ul style="padding-left: 1.2em; margin: 0;">
+                    <li>Cisco Devices</li>
+                    <li>VLANs</li>
+                    <li>Dynamic Routing</li>
+                    <li>Network Security</li>
+                    <li>Access Control</li>
+                    <li>NAT & DHCP</li>
+                </ul>
             </div>
-            <div class="skill-category" style="animation-delay: 0.1s;">
-                <h3>Languages</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Bash</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">HTML/CSS</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">PHP</span>
-                </div>
+            <div class="skill-category" style="flex: 1 1 220px; min-width: 200px; background: #181c1f; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); animation-delay: 0.1s;">
+                <h3 style="margin-bottom: 0.7em; color: var(--accent-color, #00FF8C);">Languages</h3>
+                <ul style="padding-left: 1.2em; margin: 0;">
+                    <li>Python</li>
+                    <li>Bash</li>
+                    <li>SQL</li>
+                    <li>HTML/CSS</li>
+                    <li>JavaScript</li>
+                    <li>PHP</li>
+                </ul>
             </div>
-            <div class="skill-category" style="animation-delay: 0.2s;">
-                <h3>Pentest Tools</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Nmap</span>
-                    <span class="skill-tag">Metasploit</span>
-                    <span class="skill-tag">Wireshark</span>
-                    <span class="skill-tag">Burp Suite</span>
-                    <span class="skill-tag">John the Ripper</span>
-                    <span class="skill-tag">Netcat</span>
-                </div>
+            <div class="skill-category" style="flex: 1 1 220px; min-width: 200px; background: #181c1f; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); animation-delay: 0.2s;">
+                <h3 style="margin-bottom: 0.7em; color: var(--accent-color, #00FF8C);">Pentest Tools</h3>
+                <ul style="padding-left: 1.2em; margin: 0;">
+                    <li>Nmap</li>
+                    <li>Metasploit</li>
+                    <li>Wireshark</li>
+                    <li>Burp Suite</li>
+                    <li>John the Ripper</li>
+                    <li>Netcat</li>
+                </ul>
             </div>
-            <div class="skill-category" style="animation-delay: 0.3s;">
-                <h3>Developer Tools</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">VS Code</span>
-                    <span class="skill-tag">Jupyter</span>
-                    <span class="skill-tag">Colab</span>
-                    <span class="skill-tag">Packet Tracer</span>
-                </div>
+            <div class="skill-category" style="flex: 1 1 220px; min-width: 200px; background: #181c1f; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); animation-delay: 0.3s;">
+                <h3 style="margin-bottom: 0.7em; color: var(--accent-color, #00FF8C);">Developer Tools</h3>
+                <ul style="padding-left: 1.2em; margin: 0;">
+                    <li>Git</li>
+                    <li>Docker</li>
+                    <li>VS Code</li>
+                    <li>Jupyter</li>
+                    <li>Colab</li>
+                    <li>Packet Tracer</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -278,29 +277,64 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section id="certifications">
         <h2>Certifications</h2>
         <div class="certifications-grid">
-            <div class="cert-card fade-in">
-                <div class="cert-icon">🔐</div>
+            <div class="cert-card fade-in" style="animation-delay: 0.2s;">
+                <div class="cert-icon"><img src="/Images/Badges/cyberops.png" alt="CyberOps Associate Badge" /></div>
+                <div class="cert-badge">
+                    <div class="cert-badge-inner">
+                        <div class="cert-title">CybeOps</div>
+                        <div class="cert-issuer">Cisco</div>
+                    </div>
+                </div>
+                <h3>CyberOps Associate</h3>
+                <p class="cert-description">
+                    Validates practical skills in threat detection, incident response, and security monitoring as part of a modern SOC team.
+                </p>
+                <div class="cert-footer">
+                    <span class="cert-date">Issued Dec 3, 2025</span>
+                    <a href="#" class="cert-link" onclick="openPDFModal('/Certificates/ccna-cyberops-certificate.pdf'); return false;">View PDF &rarr;</a>
+                </div>
+            </div>
+            <div class="cert-card fade-in" style="animation-delay: 0.3s;">
+                <div class="cert-icon"><img src="/Images/Badges/network-security.png" alt="Network Security Badge" /></div>
                 <div class="cert-badge">
                     <div class="cert-badge-inner">
                         <div class="cert-title">Network Security</div>
                         <div class="cert-issuer">Cisco</div>
                     </div>
                 </div>
-                <h3>CCNA: Enterprise Networking, Security, and Automation</h3>
+                <h3>Network Security</h3>
+                <p class="cert-description">
+                    Demonstrates expertise in securing network infrastructure and implementing security protocols to protect data and assets.
+                </p>
+                <div class="cert-footer">
+                    <span class="cert-date">Issued Nov 19, 2025</span>
+                    <a href="#" class="cert-link" onclick="openPDFModal('/Certificates/ccna-network-security-certificate.pdf'); return false;">View PDF &rarr;</a>
+                </div>
+            </div>
+
+            <div class="cert-card fade-in">
+                <div class="cert-icon"><img src="/Images/Badges/ccna-enterprise.png" alt="CCNA Enterprise Badge" /></div>
+                <div class="cert-badge">
+                    <div class="cert-badge-inner">
+                        <div class="cert-title">Enterprise Networking</div>
+                        <div class="cert-issuer">Cisco</div>
+                    </div>
+                </div>
+                <h3>Enterprise Network</h3>
                 <p class="cert-description">
                     Comprehensive certification covering enterprise networking, security protocols, and automation techniques for modern networks.
                 </p>
                 <div class="cert-footer">
-                    <span class="cert-date">Nov 2025</span>
-                    <a href="#" class="cert-link">Verify &rarr;</a>
+                    <span class="cert-date">Issued Nov 19, 2025</span>
+                    <a href="#" class="cert-link" onclick="openPDFModal('/Certificates/ccna-enterprise-network-certificate.pdf'); return false;">View PDF &rarr;</a>
                 </div>
             </div>
 
             <div class="cert-card fade-in" style="animation-delay: 0.1s;">
-                <div class="cert-icon">🌐</div>
+                <div class="cert-icon"><img src="/Images/Badges/ccna-switching.png" alt="CCNA Enterprise Badge" /></div>
                 <div class="cert-badge">
                     <div class="cert-badge-inner">
-                        <div class="cert-title">Networking</div>
+                        <div class="cert-title">Switching</div>
                         <div class="cert-issuer">Cisco</div>
                     </div>
                 </div>
@@ -309,68 +343,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     Fundamental skills in switching, routing, and wireless networking essentials for building scalable networks.
                 </p>
                 <div class="cert-footer">
-                    <span class="cert-date">Nov 2025</span>
-                    <a href="#" class="cert-link">Verify &rarr;</a>
+                    <span class="cert-date">Issued Jul 6, 2025</span>
+                    <a href="#" class="cert-link" onclick="openPDFModal('/Certificates/ccan-switching-certificate.pdf'); return false;">View PDF &rarr;</a>
                 </div>
-            </div>
-
-            <div class="cert-card fade-in" style="animation-delay: 0.2s;">
-                <div class="cert-icon">💻</div>
-                <div class="cert-badge">
-                    <div class="cert-badge-inner">
-                        <div class="cert-title">Systems</div>
-                        <div class="cert-issuer">Cisco</div>
-                    </div>
-                </div>
-                <h3>Systems and Network Essentials Course (A+)</h3>
-                <p class="cert-description">
-                    Essential knowledge in computer systems, networking fundamentals, and IT support skills.
-                </p>
-                <div class="cert-footer">
-                    <span class="cert-date">June 2025</span>
-                    <a href="#" class="cert-link">Verify &rarr;</a>
-                </div>
-            </div>
-
-            <div class="cert-card fade-in" style="animation-delay: 0.3s;">
-                <div class="cert-icon">🏆</div>
-                <div class="cert-badge">
-                    <div class="cert-badge-inner">
-                        <div class="cert-title">Security</div>
-                        <div class="cert-issuer">Youth Training Centre</div>
-                    </div>
-                </div>
-                <h3>Network Security Certification</h3>
-                <p class="cert-description">
-                    Training in network security principles and practices from Youth Training Centre in Yangon, Myanmar.
-                </p>
-                <div class="cert-footer">
-                    <span class="cert-date">Sept 2023</span>
-                    <a href="#" class="cert-link">Verify &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card fade-in">
-                <h3>🖥️ Linux Network Performance Evaluation</h3>
-                <p>R&D project evaluating network performance metrics like delay, jitter, throughput, and packet loss on IPv4/IPv6 with TCP/UDP. Used Bash scripting and DITG tool for automation and data analysis. <span class="project-sign">(Grade: A)</span></p>
-                <a href="#" class="project-link">View Details &rarr;</a>
-            </div>
-
-            <div class="project-card fade-in" style="animation-delay: 0.1s;">
-                <h3>🔍 Vulnerability Assessment</h3>
-                <p>Performed MySQL and HTTP vulnerability assessments on Windows Server 2016 using Metasploit in Kali Linux. Implemented basic cryptographic techniques for secure communication. <span class="project-sign">(Grade: A+)</span></p>
-                <a href="#" class="project-link">Explore &rarr;</a>
-            </div>
-
-            <div class="project-card fade-in" style="animation-delay: 0.2s;">
-                <h3>🛡️ Windows Server & Network Setup</h3>
-                <p>Designed and configured a network architecture with Active Directory, DNS, DHCP on Windows Server 2012R2. Automated user/group management via PowerShell scripts. <span class="project-sign">(Grade: A+)</span></p>
-                <a href="#contact" class="project-link">Get Notified &rarr;</a>
             </div>
         </div>
     </section>
@@ -491,6 +466,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 }
             }
             window.addEventListener('DOMContentLoaded', type);
+
+            // PDF Modal logic
+            function openPDFModal(pdfUrl) {
+                let modal = document.getElementById('pdfModal');
+                let iframe = document.getElementById('pdfIframe');
+                modal.style.display = 'flex';
+                iframe.src = pdfUrl;
+            }
+            function closePDFModal() {
+                let modal = document.getElementById('pdfModal');
+                let iframe = document.getElementById('pdfIframe');
+                modal.style.display = 'none';
+                iframe.src = '';
+            }
         </script>
+
+        <style>
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.75);
+            align-items: center;
+            justify-content: center;
+        }
+        .pdf-modal-content {
+            background: #181c1f;
+            border-radius: 10px;
+            padding: 1.5em 1em 1em 1em;
+            max-width: 90vw;
+            max-height: 90vh;
+            box-shadow: 0 4px 32px 0 rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .pdf-modal-content iframe {
+            width: 70vw;
+            height: 80vh;
+            border: none;
+            background: #fff;
+            margin-top: 0.5em;
+        }
+        .close-pdf-btn {
+            background: #222;
+            color: var(--accent-color, #00FF8C);
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2em;
+            padding: 0.2em 0.7em;
+            cursor: pointer;
+            margin-bottom: 0.5em;
+        }
+        .close-pdf-btn:hover {
+            background: var(--accent-color, #00FF8C);
+            color: #181c1f;
+        }
+        </style>
+
+        <div id="pdfModal" class="pdf-modal" onclick="if(event.target===this)closePDFModal()">
+            <div class="pdf-modal-content">
+                <button class="close-pdf-btn" onclick="closePDFModal()">&times; Close</button>
+                <iframe id="pdfIframe" src="" allowfullscreen></iframe>
+            </div>
+        </div>
 </BaseLayout>
 

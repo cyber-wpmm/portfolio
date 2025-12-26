@@ -78,20 +78,34 @@
 }
 /* --- Skill Tags Layout --- */
 .skill-tags {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
     margin: 0.5rem 0 1.5rem 1.2em;
     padding: 0;
 }
 
 .skill-tag {
-    display: list-item;
-    background: none;
+    display: inline-block;
+    background: rgba(0,255,140,0.08);
     color: var(--accent-color, #00FF8C);
+    border: 1px solid var(--accent-color, #00FF8C);
+    border-radius: 16px;
     font-size: 1em;
     font-family: inherit;
     margin-bottom: 0.2em;
-    white-space: normal;
-    transition: none;
+    padding: 0.2em 0.8em;
+    margin-right: 0.4em;
+    margin-top: 0.2em;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+/* For certification skill tags specifically */
+.cert-skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    margin: 0.5em 0 0.5em 0;
+}
 }
 .skill-tag:hover {
     background: var(--accent-color, #00FF8C);

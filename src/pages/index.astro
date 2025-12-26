@@ -1,0 +1,496 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Win Phyo | Cybersecurity Portfolio" description="Modern cybersecurity portfolio with terminal-inspired design">
+    <nav>
+        <div class="nav-content">
+            <a href="#hero" class="logo" style="text-decoration: none; color: inherit; cursor: pointer;">&gt;_<span class="logo-sign">· Win Phyo</span></a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1><span id="typed-name"></span></h1>
+            <div class="tag">// cybersecurity student & network specialist</div>
+            <p class="subtitle">Final Year Cybersecurity Student @ AUT</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+                <a href="#contact" class="btn btn-tertiary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        Hi! I'm <span class="highlight">Win Phyo</span>, a passionate final-year Cybersecurity student at AUT, eager to apply my skills in network security and system administration developed through academic projects, CTF competitions, and hands-on practical labs. My collaborative experience in customer-oriented industries has strengthened my communication skills and ability to solve problems under pressure. <span class="about-sign">— Win Phyo</span>
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-label">Years of Study</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Certifications</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-dot dot-red"></div>
+                            <div class="code-dot dot-yellow"></div>
+                            <div class="code-dot dot-green"></div>
+                            <span class="code-title">about.js</span>
+                        </div>
+                        <div class="code-content">
+                                                        <pre><code><span class="code-keyword">const</span> <span class="code-variable">securityAnalyst</span> &#61; &#123;
+    <span class="code-property">name</span>&#58; <span class="code-string">"Win Phyo"</span>,
+    <span class="code-property">role</span>&#58; <span class="code-string">"Cybersecurity Student"</span>,
+    <span class="code-property">location</span>&#58; <span class="code-string">"Auckland, NZ"</span>,
+    <span class="code-property">interests</span>&#58; [
+        <span class="code-string">"Network Security"</span>,
+        <span class="code-string">"Ethical Hacking"</span>,
+        <span class="code-string">"System Administration"</span>,
+        <span class="code-string">"CTF Competitions"</span>
+    ],
+    <span class="code-property">learning</span>&#58; [
+        <span class="code-string">"Advanced Penetration Testing"</span>,
+        <span class="code-string">"Cloud Security"</span>
+    ],
+    <span class="code-property">funFact</span>&#58; <span class="code-string">"Home lab with Docker"</span>
+&#125;&#59;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Networking</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Cisco Devices</span>
+                    <span class="skill-tag">VLANs</span>
+                    <span class="skill-tag">Dynamic Routing</span>
+                    <span class="skill-tag">Network Security</span>
+                    <span class="skill-tag">Access Control</span>
+                    <span class="skill-tag">NAT & DHCP</span>
+                </div>
+            </div>
+            <div class="skill-category" style="animation-delay: 0.1s;">
+                <h3>Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Bash</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+            </div>
+            <div class="skill-category" style="animation-delay: 0.2s;">
+                <h3>Pentest Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Nmap</span>
+                    <span class="skill-tag">Metasploit</span>
+                    <span class="skill-tag">Wireshark</span>
+                    <span class="skill-tag">Burp Suite</span>
+                    <span class="skill-tag">John the Ripper</span>
+                    <span class="skill-tag">Netcat</span>
+                </div>
+            </div>
+            <div class="skill-category" style="animation-delay: 0.3s;">
+                <h3>Developer Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">Jupyter</span>
+                    <span class="skill-tag">Colab</span>
+                    <span class="skill-tag">Packet Tracer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <h3>🖥️ Linux Network Performance Evaluation</h3>
+                <p>R&D project evaluating network performance metrics like delay, jitter, throughput, and packet loss on IPv4/IPv6 with TCP/UDP. Used Bash scripting and DITG tool for automation and data analysis. <span class="project-sign">(Grade: A)</span></p>
+                <a href="#" class="project-link">View Details &rarr;</a>
+            </div>
+
+            <div class="project-card fade-in" style="animation-delay: 0.1s;">
+                <h3>🔍 Vulnerability Assessment</h3>
+                <p>Performed MySQL and HTTP vulnerability assessments on Windows Server 2016 using Metasploit in Kali Linux. Implemented basic cryptographic techniques for secure communication. <span class="project-sign">(Grade: A+)</span></p>
+                <a href="#" class="project-link">Explore &rarr;</a>
+            </div>
+
+            <div class="project-card fade-in" style="animation-delay: 0.2s;">
+                <h3>🛡️ Windows Server & Network Setup</h3>
+                <p>Designed and configured a network architecture with Active Directory, DNS, DHCP on Windows Server 2012R2. Automated user/group management via PowerShell scripts. <span class="project-sign">(Grade: A+)</span></p>
+                <a href="#contact" class="project-link">Get Notified &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Crew Member</h3>
+                    <div class="timeline-meta">
+                        <div class="timeline-row">
+                            <div class="timeline-company"><strong>McDonald's</strong>, Auckland, NZ</div>
+                            <div class="timeline-date">Aug 2025 – Present</div>
+                        </div>
+                    </div>
+                    <p class="timeline-description">
+                        Working in a fast-paced customer service environment, handling front-of-house operations, customer interactions, and maintaining high standards of service efficiency.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in" style="animation-delay: 0.1s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Kitchen & Front of House Staff</h3>
+                    <div class="timeline-meta">
+                        <div class="timeline-row">
+                            <div class="timeline-company"><strong>Beyond Karaoke Bar</strong>, Auckland CBD, NZ</div>
+                            <div class="timeline-date">May 2024 – Mar 2025</div>
+                        </div>
+                    </div>
+                    <p class="timeline-description">
+                        Managed kitchen operations and customer service, ensured smooth operations during peak hours, and maintained excellent customer satisfaction.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in" style="animation-delay: 0.2s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Seeds Holiday Program - Volunteer</h3>
+                    <div class="timeline-meta">
+                        <div class="timeline-row">
+                            <div class="timeline-company"><strong>Church In Auckland</strong></div>
+                            <div class="timeline-date">Apr 2025 – Apr 2025</div>
+                        </div>
+                    </div>
+                    <p class="timeline-description">
+                        Assisted in organizing and running educational and recreational activities for children, fostering teamwork and leadership skills.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in" style="animation-delay: 0.3s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>English Speaking Program - Volunteer</h3>
+                    <div class="timeline-meta">
+                        <div class="timeline-row">
+                            <div class="timeline-company"><strong>Summit Education Organization</strong></div>
+                            <div class="timeline-date">Aug 2023 – Jan 2024</div>
+                        </div>
+                    </div>
+                    <p class="timeline-description">
+                        Supported non-native speakers in improving their English communication skills through conversation and group activities.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item fade-in" style="animation-delay: 0.4s;">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Peer Assisted Learning Volunteer</h3>
+                    <div class="timeline-meta">
+                        <div class="timeline-row">
+                            <div class="timeline-company"><strong>Griffith College</strong></div>
+                            <div class="timeline-date">Nov 2022 – Jul 2023</div>
+                        </div>
+                    </div>
+                    <p class="timeline-description">
+                        Provided academic support and mentoring to fellow students, helping them succeed in their studies and develop confidence.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-list">
+            <div class="education-entry">
+                <h3>Bachelor of Computer and Information Sciences</h3>
+                <div class="education-school">Auckland University of Technology, New Zealand</div>
+                <div class="education-date">Feb 2024 – Present</div>
+                <div class="education-gpa"><span class="gpa-highlight">GPA: 8.18/9.0</span></div>
+                <ul class="education-details">
+                    <li><strong>🌐 Major:</strong> Network and Cybersecurity</li>
+                    <li><strong>🤖 Minor:</strong> Artificial Intelligence</li>
+                </ul>
+            </div>
+            <div class="education-entry">
+                <h3>Diploma of Information Technology</h3>
+                <div class="education-school">Griffith College, Australia</div>
+                <div class="education-date">Mar 2022 – Feb 2023</div>
+                <div class="education-gpa"><span class="gpa-highlight">GPA: 7.0/7.0</span></div>
+                <ul class="education-details">
+                    <li>🏆 <strong>Dux Award:</strong> Highest GPA in Diploma of IT program (Apr 2023)</li>
+                    <li>🎖️ <strong>Commitment Award:</strong> Academic Excellence in 1004ITC (Sep 2023)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="certifications-grid">
+            <div class="cert-card fade-in">
+                <div class="cert-icon">🔐</div>
+                <div class="cert-badge">
+                    <div class="cert-badge-inner">
+                        <div class="cert-title">Network Security</div>
+                        <div class="cert-issuer">Cisco</div>
+                    </div>
+                </div>
+                <h3>CCNA: Enterprise Networking, Security, and Automation</h3>
+                <p class="cert-description">
+                    Comprehensive certification covering enterprise networking, security protocols, and automation techniques for modern networks.
+                </p>
+                <div class="cert-footer">
+                    <span class="cert-date">Nov 2025</span>
+                    <a href="#" class="cert-link">Verify &rarr;</a>
+                </div>
+            </div>
+
+            <div class="cert-card fade-in" style="animation-delay: 0.1s;">
+                <div class="cert-icon">🌐</div>
+                <div class="cert-badge">
+                    <div class="cert-badge-inner">
+                        <div class="cert-title">Networking</div>
+                        <div class="cert-issuer">Cisco</div>
+                    </div>
+                </div>
+                <h3>CCNA: Switching, Routing, and Wireless Essentials</h3>
+                <p class="cert-description">
+                    Fundamental skills in switching, routing, and wireless networking essentials for building scalable networks.
+                </p>
+                <div class="cert-footer">
+                    <span class="cert-date">Nov 2025</span>
+                    <a href="#" class="cert-link">Verify &rarr;</a>
+                </div>
+            </div>
+
+            <div class="cert-card fade-in" style="animation-delay: 0.2s;">
+                <div class="cert-icon">💻</div>
+                <div class="cert-badge">
+                    <div class="cert-badge-inner">
+                        <div class="cert-title">Systems</div>
+                        <div class="cert-issuer">Cisco</div>
+                    </div>
+                </div>
+                <h3>Systems and Network Essentials Course (A+)</h3>
+                <p class="cert-description">
+                    Essential knowledge in computer systems, networking fundamentals, and IT support skills.
+                </p>
+                <div class="cert-footer">
+                    <span class="cert-date">June 2025</span>
+                    <a href="#" class="cert-link">Verify &rarr;</a>
+                </div>
+            </div>
+
+            <div class="cert-card fade-in" style="animation-delay: 0.3s;">
+                <div class="cert-icon">🏆</div>
+                <div class="cert-badge">
+                    <div class="cert-badge-inner">
+                        <div class="cert-title">Security</div>
+                        <div class="cert-issuer">Youth Training Centre</div>
+                    </div>
+                </div>
+                <h3>Network Security Certification</h3>
+                <p class="cert-description">
+                    Training in network security principles and practices from Youth Training Centre in Yangon, Myanmar.
+                </p>
+                <div class="cert-footer">
+                    <span class="cert-date">Sept 2023</span>
+                    <a href="#" class="cert-link">Verify &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <h3>🖥️ Linux Network Performance Evaluation</h3>
+                <p>R&D project evaluating network performance metrics like delay, jitter, throughput, and packet loss on IPv4/IPv6 with TCP/UDP. Used Bash scripting and DITG tool for automation and data analysis. <span class="project-sign">(Grade: A)</span></p>
+                <a href="#" class="project-link">View Details &rarr;</a>
+            </div>
+
+            <div class="project-card fade-in" style="animation-delay: 0.1s;">
+                <h3>🔍 Vulnerability Assessment</h3>
+                <p>Performed MySQL and HTTP vulnerability assessments on Windows Server 2016 using Metasploit in Kali Linux. Implemented basic cryptographic techniques for secure communication. <span class="project-sign">(Grade: A+)</span></p>
+                <a href="#" class="project-link">Explore &rarr;</a>
+            </div>
+
+            <div class="project-card fade-in" style="animation-delay: 0.2s;">
+                <h3>🛡️ Windows Server & Network Setup</h3>
+                <p>Designed and configured a network architecture with Active Directory, DNS, DHCP on Windows Server 2012R2. Automated user/group management via PowerShell scripts. <span class="project-sign">(Grade: A+)</span></p>
+                <a href="#contact" class="project-link">Get Notified &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <h2>Latest Blog Posts</h2>
+        <div class="blog-grid">
+            <div class="blog-card fade-in">
+                <div class="blog-header">
+                    <div class="blog-date">October 15, 2025</div>
+                </div>
+                <div class="blog-body">
+                    <h3>Building Secure Networks <span class="post-sign">— Win Phyo</span></h3>
+                    <div class="blog-tags">
+                        <span class="blog-tag">Networking</span>
+                        <span class="blog-tag">Security</span>
+                        <span class="blog-tag">Automation</span>
+                    </div>
+                    <p>Exploring advanced techniques for network configuration, security implementation, and automation using Cisco technologies and PowerShell...</p>
+                    <a href="#" class="project-link">Read More &rarr;</a>
+                </div>
+            </div>
+
+            <div class="blog-card fade-in" style="animation-delay: 0.1s;">
+                <div class="blog-header">
+                    <div class="blog-date">October 10, 2025</div>
+                </div>
+                <div class="blog-body">
+                    <h3>Ethical Hacking and Penetration Testing</h3>
+                    <div class="blog-tags">
+                        <span class="blog-tag">Cybersecurity</span>
+                        <span class="blog-tag">PenTesting</span>
+                        <span class="blog-tag">CTF</span>
+                    </div>
+                    <p>A deep dive into penetration testing methodologies, vulnerability assessment, and CTF challenges that are shaping modern cybersecurity practices...</p>
+                    <a href="#" class="project-link">Read More &rarr;</a>
+                </div>
+            </div>
+
+            <div class="blog-card fade-in" style="animation-delay: 0.2s;">
+                <div class="blog-header">
+                    <div class="blog-date">October 5, 2025</div>
+                </div>
+                <div class="blog-body">
+                    <h3>Home Lab Adventures</h3>
+                    <div class="blog-tags">
+                        <span class="blog-tag">Docker</span>
+                        <span class="blog-tag">Self-Hosting</span>
+                        <span class="blog-tag">Automation</span>
+                    </div>
+                    <p>Learn how to set up and maintain a personal home lab with Docker containers, VPN, and various self-hosted services for learning and experimentation...</p>
+                    <a href="#" class="project-link">Read More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-grid">
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:winphyo.wpmm@gmail.com">winphyo.wpmm@gmail.com</a>
+                </div>
+
+                <div class="contact-item fade-in" style="animation-delay: 0.1s;">
+                    <div class="contact-icon">💼</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/cyber-wpmm" target="_blank">github.com/cyber-wpmm</a>
+                </div>
+
+                <div class="contact-item fade-in" style="animation-delay: 0.2s;">
+                    <div class="contact-icon">🔗</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/in/winphyo-it/" target="_blank">linkedin.com/in/winphyo-it</a>
+                </div>
+            </div>
+
+            <div class="contact-form fade-in">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>$ name --input</label>
+                        <input type="text" placeholder="Win Phyo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>$ email --input</label>
+                        <input type="email" placeholder="winphyo.wpmm@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>$ message --input</label>
+                        <textarea placeholder="Your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 <span class="signature">Win Phyo</span>. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Made with ❤️ using Astro Framework, HTML & CSS</p>
+    </footer>
+
+
+        <script src="/src/scripts/main.js"></script>
+        <script>
+            // Typing animation for hero name (slower)
+            const name = "WIN PHYO";
+            const target = document.getElementById("typed-name");
+            let i = 0;
+            function type() {
+                if (i < name.length) {
+                    target.textContent += name.charAt(i);
+                    i++;
+                    setTimeout(type, 260);
+                }
+            }
+            window.addEventListener('DOMContentLoaded', type);
+        </script>
+</BaseLayout>
+

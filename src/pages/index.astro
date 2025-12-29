@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="Win Phyo | Cybersecurity Portfolio" description="Modern cybersecurity portfolio with terminal-inspired design">
     <nav>
         <div class="nav-content">
-            <a href="#hero" class="logo" style="text-decoration: none; color: inherit; cursor: pointer;">&gt;_<span class="logo-sign">· Win Phyo</span></a>
+            <a href="#hero" class="logo" style="text-decoration: none; cursor: pointer;">&gt;_<span class="logo-sign">· Win Phyo</span></a>
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -92,10 +92,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     
     <section id="skills">
         <h2>Skills</h2>
-        <div class="skills-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1.5rem;">
-            <div class="skill-category" style="flex: 1 1 220px; min-width: 200px; background: #181c1f; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);">
-                <h3 style="margin-bottom: 0.7em; color: var(--accent-color, #00FF8C);">Networking</h3>
-                <ul style="padding-left: 1.2em; margin: 0;">
+        <div class="skills-grid">
+            <div class="skill-category card-hover">
+                <h3 class="skill-title">Networking</h3>
+                <ul class="skill-list">
                     <li>Cisco Devices</li>
                     <li>VLANs</li>
                     <li>Dynamic Routing</li>
@@ -104,9 +104,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <li>NAT & DHCP</li>
                 </ul>
             </div>
-            <div class="skill-category" style="flex: 1 1 220px; min-width: 200px; background: #181c1f; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); animation-delay: 0.1s;">
-                <h3 style="margin-bottom: 0.7em; color: var(--accent-color, #00FF8C);">Languages</h3>
-                <ul style="padding-left: 1.2em; margin: 0;">
+            <div class="skill-category card-hover" style="animation-delay: 0.1s;">
+                <h3 class="skill-title">Languages</h3>
+                <ul class="skill-list">
                     <li>Python</li>
                     <li>Bash</li>
                     <li>SQL</li>
@@ -115,9 +115,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <li>PHP</li>
                 </ul>
             </div>
-            <div class="skill-category" style="flex: 1 1 220px; min-width: 200px; background: #181c1f; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); animation-delay: 0.2s;">
-                <h3 style="margin-bottom: 0.7em; color: var(--accent-color, #00FF8C);">Pentest Tools</h3>
-                <ul style="padding-left: 1.2em; margin: 0;">
+            <div class="skill-category card-hover" style="animation-delay: 0.2s;">
+                <h3 class="skill-title">Pentest Tools</h3>
+                <ul class="skill-list">
                     <li>Nmap</li>
                     <li>Metasploit</li>
                     <li>Wireshark</li>
@@ -126,9 +126,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <li>Netcat</li>
                 </ul>
             </div>
-            <div class="skill-category" style="flex: 1 1 220px; min-width: 200px; background: #181c1f; border-radius: 12px; padding: 1.2rem 1.5rem; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); animation-delay: 0.3s;">
-                <h3 style="margin-bottom: 0.7em; color: var(--accent-color, #00FF8C);">Developer Tools</h3>
-                <ul style="padding-left: 1.2em; margin: 0;">
+            <div class="skill-category card-hover" style="animation-delay: 0.3s;">
+                <h3 class="skill-title">Developer Tools</h3>
+                <ul class="skill-list">
                     <li>Git</li>
                     <li>Docker</li>
                     <li>VS Code</li>
@@ -165,11 +165,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <section id="experience">
         <h2>Experience</h2>
+        <h3 style="margin-top:2rem; color:var(--accent-color, #00FF8C); font-size:2rem;">Work Experience</h3>
         <div class="timeline">
             <div class="timeline-item fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <h3>Crew Member</h3>
+                        <h3>Crew Member</h3>
                     <div class="timeline-meta">
                         <div class="timeline-row">
                             <div class="timeline-company"><strong>McDonald's</strong>, Auckland, NZ</div>
@@ -181,11 +182,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     </p>
                 </div>
             </div>
-
-            <div class="timeline-item fade-in" style="animation-delay: 0.1s;">
+            <div class="timeline-item fade-in anim-delay-1">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <h3>Kitchen & Front of House Staff</h3>
+                        <h3>Kitchen & Front of House Staff</h3>
                     <div class="timeline-meta">
                         <div class="timeline-row">
                             <div class="timeline-company"><strong>Beyond Karaoke Bar</strong>, Auckland CBD, NZ</div>
@@ -197,8 +197,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     </p>
                 </div>
             </div>
-
-            <div class="timeline-item fade-in" style="animation-delay: 0.2s;">
+        </div>
+        <h3 style="margin-top:2.5rem; color:var(--accent-color, #00FF8C); font-size:2rem;">Volunteer Experience</h3>
+        <div class="timeline">
+            <div class="timeline-item fade-in anim-delay-2">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>General Executive Role</h3>
+                    <div class="timeline-meta">
+                        <div class="timeline-row">
+                            <div class="timeline-company"><strong>AUT Cyber Security & Intelligence (CSI)</strong></div>
+                            <div class="timeline-date">Aug 2025 – Present</div>
+                        </div>
+                    </div>
+                    <p class="timeline-description">
+                        <!-- Description to be added -->
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in anim-delay-3">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Seeds Holiday Program - Volunteer</h3>
@@ -213,8 +230,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     </p>
                 </div>
             </div>
-
-            <div class="timeline-item fade-in" style="animation-delay: 0.3s;">
+            <div class="timeline-item fade-in anim-delay-4">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>English Speaking Program - Volunteer</h3>
@@ -229,11 +245,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     </p>
                 </div>
             </div>
-
-            <div class="timeline-item fade-in" style="animation-delay: 0.4s;">
+            <div class="timeline-item fade-in anim-delay-5">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <h3>Peer Assisted Learning Volunteer</h3>
+                    <h3>Peer Assisted Learning - Volunteer</h3>
                     <div class="timeline-meta">
                         <div class="timeline-row">
                             <div class="timeline-company"><strong>Griffith College</strong></div>
@@ -251,7 +266,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section id="education">
         <h2>Education</h2>
         <div class="education-list">
-            <div class="education-entry">
+            <div class="education-entry" onclick="window.open('https://www.myequals.net/sharelink/a3168318-7040-408c-9632-4bf1eea10924/f50c0e80-bd4f-4d62-b03e-627e3f7331ac', '_blank', 'noopener')" style="cursor:pointer;">
                 <h3>Bachelor of Computer and Information Sciences</h3>
                 <div class="education-school">Auckland University of Technology, New Zealand</div>
                 <div class="education-date">Feb 2024 – Present</div>
@@ -260,8 +275,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <li><strong>🌐 Major:</strong> Network and Cybersecurity</li>
                     <li><strong>🤖 Minor:</strong> Artificial Intelligence</li>
                 </ul>
+                <div class="edu-link-note">Click to view Academic Transcript</div>
             </div>
-            <div class="education-entry">
+            <div class="education-entry education-link" onclick="openPDFModal('/Certificates/griffith-diploma-certificate.pdf')" style="cursor:pointer;">
                 <h3>Diploma of Information Technology</h3>
                 <div class="education-school">Griffith College, Australia</div>
                 <div class="education-date">Mar 2022 – Feb 2023</div>
@@ -270,6 +286,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <li>🏆 <strong>Dux Award:</strong> Highest GPA in Diploma of IT program (Apr 2023)</li>
                     <li>🎖️ <strong>Commitment Award:</strong> Academic Excellence in 1004ITC (Sep 2023)</li>
                 </ul>
+                <div class="edu-link-note">Click to view Certificate (PDF)</div>
             </div>
         </div>
     </section>
@@ -291,7 +308,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </p>
                 <div class="cert-footer">
                     <span class="cert-date">Issued Dec 3, 2025</span>
-                    <a href="#" class="cert-link" onclick="openPDFModal('/Certificates/ccna-cyberops-certificate.pdf'); return false;">View PDF &rarr;</a>
+                    <a href="/Certificates/ccna-cyberops-certificate.pdf" class="cert-link" data-pdf="/Certificates/ccna-cyberops-certificate.pdf">View PDF &rarr;</a>
                 </div>
             </div>
             <div class="cert-card fade-in" style="animation-delay: 0.3s;">
@@ -308,7 +325,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </p>
                 <div class="cert-footer">
                     <span class="cert-date">Issued Nov 19, 2025</span>
-                    <a href="#" class="cert-link" onclick="openPDFModal('/Certificates/ccna-network-security-certificate.pdf'); return false;">View PDF &rarr;</a>
+                    <a href="/Certificates/ccna-network-security-certificate.pdf" class="cert-link" data-pdf="/Certificates/ccna-network-security-certificate.pdf">View PDF &rarr;</a>
                 </div>
             </div>
 
@@ -326,7 +343,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </p>
                 <div class="cert-footer">
                     <span class="cert-date">Issued Nov 19, 2025</span>
-                    <a href="#" class="cert-link" onclick="openPDFModal('/Certificates/ccna-enterprise-network-certificate.pdf'); return false;">View PDF &rarr;</a>
+                    <a href="/Certificates/ccna-enterprise-network-certificate.pdf" class="cert-link" data-pdf="/Certificates/ccna-enterprise-network-certificate.pdf">View PDF &rarr;</a>
                 </div>
             </div>
 
@@ -344,7 +361,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </p>
                 <div class="cert-footer">
                     <span class="cert-date">Issued Jul 6, 2025</span>
-                    <a href="#" class="cert-link" onclick="openPDFModal('/Certificates/ccan-switching-certificate.pdf'); return false;">View PDF &rarr;</a>
+                    <a href="/Certificates/ccan-switching-certificate.pdf" class="cert-link" data-pdf="/Certificates/ccan-switching-certificate.pdf">View PDF &rarr;</a>
                 </div>
             </div>
         </div>
@@ -413,32 +430,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <a href="mailto:winphyo.wpmm@gmail.com">winphyo.wpmm@gmail.com</a>
                 </div>
 
-                <div class="contact-item fade-in" style="animation-delay: 0.1s;">
+                <div class="contact-item fade-in anim-delay-1">
                     <div class="contact-icon">💼</div>
                     <h3>GitHub</h3>
                     <a href="https://github.com/cyber-wpmm" target="_blank">github.com/cyber-wpmm</a>
                 </div>
 
-                <div class="contact-item fade-in" style="animation-delay: 0.2s;">
+                <div class="contact-item fade-in anim-delay-2">
                     <div class="contact-icon">🔗</div>
                     <h3>LinkedIn</h3>
-                    <a href="https://linkedin.com/in/winphyo-it/" target="_blank">linkedin.com/in/winphyo-it</a>
+                    <a href="https://linkedin.com/in/winphyo-it/" target="_blank">linkedin.com/winphyo-it</a>
                 </div>
             </div>
 
             <div class="contact-form fade-in">
-                <form id="contactForm">
+                <form id="contactForm" action="https://formspree.io/f/xlgellyq" method="POST">
                     <div class="form-group">
-                        <label>$ name --input</label>
-                        <input type="text" placeholder="Win Phyo" required>
+                        <label>Your name:</label>
+                        <input type="text" name="name" placeholder="Win Phyo" required>
                     </div>
                     <div class="form-group">
-                        <label>$ email --input</label>
-                        <input type="email" placeholder="winphyo.wpmm@gmail.com" required>
+                        <label>Your email:</label>
+                        <input type="email" name="email" placeholder="winphyo.wpmm@gmail.com" required>
                     </div>
                     <div class="form-group">
-                        <label>$ message --input</label>
-                        <textarea placeholder="Your message here..." required></textarea>
+                        <label>Your message:</label>
+                        <textarea name="message" placeholder="Your message here..." required></textarea>
+                    </div>
+                    <!-- Honeypot field for spam prevention -->
+                    <div style="display:none;">
+                        <label>Leave this field empty</label>
+                        <input type="text" name="_honeypot" tabindex="-1" autocomplete="off">
                     </div>
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
@@ -458,14 +480,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             const name = "WIN PHYO";
             const target = document.getElementById("typed-name");
             let i = 0;
-            function type() {
-                if (i < name.length) {
-                    target.textContent += name.charAt(i);
-                    i++;
-                    setTimeout(type, 260);
+            let typingForward = true;
+            function typeLoop() {
+                if (typingForward) {
+                    if (i < name.length) {
+                        target.textContent += name.charAt(i);
+                        i++;
+                        setTimeout(typeLoop, 260);
+                    } else {
+                        typingForward = false;
+                        setTimeout(typeLoop, 3000); // 3s pause before erasing
+                    }
+                } else {
+                    if (i > 0) {
+                        target.textContent = name.substring(0, i - 1);
+                        i--;
+                        setTimeout(typeLoop, 80);
+                    } else {
+                        typingForward = true;
+                        setTimeout(typeLoop, 600); // Pause before typing again
+                    }
                 }
             }
-            window.addEventListener('DOMContentLoaded', type);
+            window.addEventListener('DOMContentLoaded', typeLoop);
 
             // PDF Modal logic
             function openPDFModal(pdfUrl) {
@@ -480,56 +517,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 modal.style.display = 'none';
                 iframe.src = '';
             }
+            // Ensure closePDFModal is globally available for inline onclick
+            window.closePDFModal = closePDFModal;
         </script>
 
-        <style>
-        .pdf-modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.75);
-            align-items: center;
-            justify-content: center;
-        }
-        .pdf-modal-content {
-            background: #181c1f;
-            border-radius: 10px;
-            padding: 1.5em 1em 1em 1em;
-            max-width: 90vw;
-            max-height: 90vh;
-            box-shadow: 0 4px 32px 0 rgba(0,0,0,0.25);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        .pdf-modal-content iframe {
-            width: 70vw;
-            height: 80vh;
-            border: none;
-            background: #fff;
-            margin-top: 0.5em;
-        }
-        .close-pdf-btn {
-            background: #222;
-            color: var(--accent-color, #00FF8C);
-            border: none;
-            border-radius: 4px;
-            font-size: 1.2em;
-            padding: 0.2em 0.7em;
-            cursor: pointer;
-            margin-bottom: 0.5em;
-        }
-        .close-pdf-btn:hover {
-            background: var(--accent-color, #00FF8C);
-            color: #181c1f;
-        }
-        </style>
+        
 
-        <div id="pdfModal" class="pdf-modal" onclick="if(event.target===this)closePDFModal()">
+        <div class="pdf-modal" id="pdfModal">
             <div class="pdf-modal-content">
-                <button class="close-pdf-btn" onclick="closePDFModal()">&times; Close</button>
-                <iframe id="pdfIframe" src="" allowfullscreen></iframe>
+                <button class="close-pdf-btn-rect" onclick="closePDFModal()" title="Close PDF">CLOSE</button>
+                <div class="pdf-modal-viewer-row">
+                    <button id="pdfOverlayPrev" class="pdf-arrow-side">&#8592;</button>
+                    <iframe id="pdfIframe" src="" allowfullscreen></iframe>
+                    <button id="pdfOverlayNext" class="pdf-arrow-side">&#8594;</button>
+                </div>
             </div>
         </div>
 </BaseLayout>

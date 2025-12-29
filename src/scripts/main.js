@@ -101,4 +101,93 @@ window.addEventListener('scroll', () => {
     }, 150);
 }, { passive: true });
 
+
+// PDF Modal logic for certificates and education cards with next/prev for Griffith College
+import { griffithAwards } from './griffithAwards.js';
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('pdfModal');
+    const iframe = document.getElementById('pdfIframe');
+    const prevBtn = document.getElementById('prevPdfBtn');
+    const nextBtn = document.getElementById('nextPdfBtn');
+    const navHint = document.getElementById('pdfNavHint');
+    const overlayPrev = document.getElementById('pdfOverlayPrev');
+    const overlayNext = document.getElementById('pdfOverlayNext');
+    let currentAwardIdx = 0;
+    let isGriffith = false;
+
+    // Helper to show PDF by index
+    function showGriffithPdf(idx) {
+        if (griffithAwards.length === 0) return;
+        currentAwardIdx = ((idx % griffithAwards.length) + griffithAwards.length) % griffithAwards.length;
+        iframe.src = griffithAwards[currentAwardIdx];
+        // Show/hide arrows and hint only for Griffith
+        if (prevBtn && nextBtn) {
+            prevBtn.style.display = nextBtn.style.display = 'inline-block';
+        }
+        if (overlayPrev && overlayNext) {
+            overlayPrev.style.display = overlayNext.style.display = 'inline-block';
+        }
+        if (navHint) {
+            navHint.style.display = griffithAwards.length > 1 ? 'block' : 'none';
+        }
+    }
+
+    // Attach click listeners to all .cert-link and .education-link elements
+    document.querySelectorAll('.cert-link, .education-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pdfUrl = this.getAttribute('data-pdf') || this.getAttribute('href');
+            // If this is the Griffith College card, enable navigation
+            if (this.querySelector('.education-school') && this.querySelector('.education-school').textContent.includes('Griffith College')) {
+                isGriffith = true;
+                // Find index in griffithAwards
+                let idx = griffithAwards.findIndex(p => p === pdfUrl);
+                if (idx === -1) idx = 0;
+                showGriffithPdf(idx);
+            } else {
+                isGriffith = false;
+                iframe.src = pdfUrl;
+                if (prevBtn && nextBtn) {
+                    prevBtn.style.display = nextBtn.style.display = 'none';
+                }
+                if (overlayPrev && overlayNext) {
+                    overlayPrev.style.display = overlayNext.style.display = 'none';
+                }
+                if (navHint) navHint.style.display = 'none';
+            }
+            modal.style.display = 'flex';
+        });
+    });
+
+    // Next/Prev navigation for Griffith awards (all arrow buttons)
+    function handlePrev(e) {
+        e.stopPropagation();
+        if (isGriffith) showGriffithPdf(currentAwardIdx - 1);
+    }
+    function handleNext(e) {
+        e.stopPropagation();
+        if (isGriffith) showGriffithPdf(currentAwardIdx + 1);
+    }
+    if (prevBtn) prevBtn.addEventListener('click', handlePrev);
+    if (nextBtn) nextBtn.addEventListener('click', handleNext);
+    if (overlayPrev) overlayPrev.addEventListener('click', handlePrev);
+    if (overlayNext) overlayNext.addEventListener('click', handleNext);
+
+    // Close modal when clicking outside content or on close button
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                iframe.src = '';
+            }
+        });
+    }
+    const closeBtn = document.querySelector('.close-pdf-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            iframe.src = '';
+        });
+    }
+});
 // End of file - signed: serozr

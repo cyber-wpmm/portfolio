@@ -389,6 +389,17 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    /* Prevent vertical shift during typewriter animation */
+    min-height: 1.2em;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#typed-name {
+    display: inline-block;
+    min-width: 0.5em;
+    vertical-align: middle;
 }
 
 .subtitle {
@@ -1340,5 +1351,28 @@ footer .signature {
     .cta-buttons {
         flex-direction: column;
     }
+}
+
+/* Social Icons Styles */
+.social-icons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+.social-icon {
+    display: inline-block;
+    transition: transform 0.25s cubic-bezier(.4,2,.6,1), color 0.25s;
+    color: #bbb;
+    font-size: 2rem;
+    line-height: 1;
+}
+.social-icon.github:hover {
+    color: #00FF8C;
+    transform: scale(1.25);
+}
+.social-icon.linkedin:hover {
+    color: #0077b5;
+    transform: scale(1.25);
 }
 

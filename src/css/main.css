@@ -1,3 +1,13 @@
+/* Restore contact-form styles after card removal */
+.contact-form {
+    background: #2a2a2a;
+    border: 1px solid rgba(0, 255, 140, 0.3);
+    border-radius: 14px;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    box-shadow: 0 4px 32px 0 rgba(0,255,140,0.08);
+    max-width: 480px;
+    margin: 0 auto;
+}
 /* PDF Modal Styles (moved from index.astro) */
 .pdf-modal {
     display: none;
@@ -136,11 +146,11 @@
     margin: 0;
 }
 /* Universal card and interactive hover effect */
-.card-hover, .timeline-content, .education-entry, .cert-card, .project-card, .blog-card, .contact-item, .stat-item, .skill-tag, .btn, .nav-links a {
+.card-hover, .timeline-content, .education-entry, .cert-card, .project-card, .blog-card, .stat-item, .skill-tag, .btn, .nav-links a {
     transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s, background 0.3s, color 0.3s;
 }
 
-.card-hover:hover, .timeline-content:hover, .education-entry:hover, .cert-card:hover, .project-card:hover, .blog-card:hover, .contact-item:hover, .stat-item:hover, .skill-tag:hover, .btn:hover, .nav-links a:hover {
+.card-hover:hover, .timeline-content:hover, .education-entry:hover, .cert-card:hover, .project-card:hover, .blog-card:hover, .stat-item:hover, .skill-tag:hover, .btn:hover, .nav-links a:hover {
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 0 30px rgba(0,255,140,0.18), 0 4px 24px 0 rgba(0,217,255,0.10);
     z-index: 2;
@@ -1116,82 +1126,38 @@ footer .signature {
     border: 1px solid rgba(0, 255, 140, 0.3);
 }
 
-.contact-container {
-    max-width: 95G0px;
-    margin: 3rem auto;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.contact-item {
-    background: #2a2a2a;
-    border: 1px solid rgba(0, 255, 140, 0.3);
-    border-radius: 10px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s;
-}
-
-.contact-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(0, 255, 140, 0.3);
-    will-change: transform;
-}
-
-.contact-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.contact-item h3 {
-    color: #00FF8C;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-.contact-item a {
-    color: #00D9FF;
-    text-decoration: none;
-    word-break: break-all;
-}
-
-.contact-item a:hover {
-    color: #00FF8C;
-}
-
-.contact-form {
-    background: #2a2a2a;
-    border: 1px solid rgba(0, 255, 140, 0.3);
-    border-radius: 10px;
+/* Removed contact section styles for tidiness */
     padding: 2rem;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
 }
 
 .form-group label {
     display: block;
     color: #00FF8C;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 1.08rem;
+    margin-bottom: 0.2rem;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 255, 140, 0.3);
-    border-radius: 5px;
-    padding: 0.8rem;
+    border: 1.5px solid #00FF8C;
+    border-radius: 8px;
+    padding: 1.1em 1.2em;
     color: #fff;
     font-family: 'Courier New', monospace;
-    transition: all 0.3s;
+    font-size: 1.08rem;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    transition: border 0.2s, box-shadow 0.2s;
+    outline: none;
 }
 
 .form-group input:focus,
@@ -1203,20 +1169,23 @@ footer .signature {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 150px;
+    min-height: 140px;
 }
 
 .submit-btn {
     width: 100%;
-    padding: 1rem;
-    background: transparent;
-    border: 1px solid #00FF8C;
-    color: #00FF8C;
-    border-radius: 5px;
+    padding: 1.15rem;
+    background: linear-gradient(90deg, #00FF8C 0%, #00D9FF 100%);
+    border: none;
+    color: #181c1f;
+    border-radius: 8px;
     font-family: 'Courier New', monospace;
     font-weight: bold;
+    font-size: 1.13rem;
     cursor: pointer;
-    transition: all 0.3s;
+    margin-top: 0.7em;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px 0 rgba(0,255,140,0.10);
 }
 
 .submit-btn:hover {

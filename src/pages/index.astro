@@ -2,10 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Win's Portfolio" description="Modern cybersecurity portfolio with terminal-inspired design">
+<BaseLayout title="Win's Portfolio" description="Portfolio showcasing projects, skills, and experiences">
     <nav>
         <div class="nav-content">
-            <a href="#hero" class="logo" style="text-decoration: none; cursor: pointer;">&gt;_<span class="logo-sign">· Win Phyo</span></a>
+            <a href="#hero" class="logo" style="text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 0.4em;">
+                <img src="/favicon.svg" alt="Logo" style="height: 1.7em; width: auto; vertical-align: middle; display: inline-block; margin-left: 0.1em;" />
+            </a>
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -46,7 +48,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </a>
             </div>
         </div>
+
     </section>
+
 
     <section id="about">
         <h2>About Me</h2>
@@ -150,6 +154,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </ul>
             </div>
         </div>
+
+    <div id="cyber-profiles">
+        <div class="cyber-profiles-container fade-in">
+            <h2>Cyber Profiles</h2>
+            <div class="cyber-profiles-links">
+                <a href="https://tryhackme.com/p/chickelittle" target="_blank" rel="noopener" class="cyber-profile-link">
+                    <img src="https://cdn.brandfetch.io/id8Qtt69AT/w/180/h/180/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1763981291724" alt="TryHackMe" class="cyber-profile-icon" />
+                    TryHackme
+                </a>
+                <a href="https://play.picoctf.org/users/chickenlittle1" target="_blank" rel="noopener" class="cyber-profile-link">
+                    <img src="https://cdn.brandfetch.io/idLW-iC-27/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1765701395894" alt="picoCTF" class="cyber-profile-icon" />
+                    picoCTF
+                </a>
+            </div>
+        </div>
+    </div>
     </section>
 
     <section id="projects">
@@ -435,35 +455,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section id="contact">
         <h2>Get In Touch</h2>
         <div class="contact-container">
-            <div class="contact-grid">
-                <div class="contact-item fade-in">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <a href="mailto:winphyo.wpmm@gmail.com">winphyo.wpmm@gmail.com</a>
-                </div>
-
-                <div class="contact-item fade-in anim-delay-1">
-                    <div class="contact-icon">💼</div>
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/cyber-wpmm" target="_blank">github.com/cyber-wpmm</a>
-                </div>
-
-                <div class="contact-item fade-in anim-delay-2">
-                    <div class="contact-icon">🔗</div>
-                    <h3>LinkedIn</h3>
-                    <a href="https://linkedin.com/in/winphyo-it/" target="_blank">linkedin.com/winphyo-it</a>
-                </div>
-            </div>
-
             <div class="contact-form fade-in">
                 <form id="contactForm" action="https://formspree.io/f/xlgellyq" method="POST">
                     <div class="form-group">
                         <label>Your name:</label>
-                        <input type="text" name="name" placeholder="Win Phyo" required>
+                        <input type="text" name="name" placeholder="James Bond" required>
                     </div>
                     <div class="form-group">
                         <label>Your email:</label>
-                        <input type="email" name="email" placeholder="winphyo.wpmm@gmail.com" required>
+                        <input type="email" name="email" placeholder="yours@example.com" required>
                     </div>
                     <div class="form-group">
                         <label>Your message:</label>
@@ -486,35 +486,64 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </footer>
 
 
-        <script src="/src/scripts/main.js"></script>
+                <script src="/src/scripts/main.js"></script>
+                <script>
+                // Smooth scroll for anchor links and robust nav highlight
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Smooth scroll
+                    document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            const targetId = this.getAttribute('href').slice(1);
+                            const target = document.getElementById(targetId);
+                            if (target) {
+                                e.preventDefault();
+                                target.scrollIntoView({ behavior: 'smooth' });
+                                history.pushState(null, '', '#' + targetId);
+                            }
+                        });
+                    });
+
+                    // Nav highlight (scrollspy)
+                    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+                    const sectionIds = Array.from(navLinks).map(link => link.getAttribute('href').slice(1));
+                    const sections = sectionIds.map(id => document.getElementById(id));
+
+                    function onScroll() {
+                        let scrollPos = window.scrollY || window.pageYOffset;
+                        let offset = 120; // adjust for nav height if needed
+                        let currentId = null;
+                        for (let i = 0; i < sections.length; i++) {
+                            const section = sections[i];
+                            if (!section) continue;
+                            if (section.offsetTop - offset <= scrollPos) {
+                                currentId = sectionIds[i];
+                            }
+                        }
+                        navLinks.forEach((link, idx) => {
+                            if (currentId && link.getAttribute('href') === '#' + currentId) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                    window.addEventListener('scroll', onScroll);
+                    onScroll();
+                });
+                </script>
         <script>
-            // Typing animation for hero name (slower)
+            // Typing animation for hero name (play once)
             const name = "WIN PHYO";
             const target = document.getElementById("typed-name");
             let i = 0;
-            let typingForward = true;
-            function typeLoop() {
-                if (typingForward) {
-                    if (i < name.length) {
-                        target.textContent += name.charAt(i);
-                        i++;
-                        setTimeout(typeLoop, 260);
-                    } else {
-                        typingForward = false;
-                        setTimeout(typeLoop, 3000); // 3s pause before erasing
-                    }
-                } else {
-                    if (i > 0) {
-                        target.textContent = name.substring(0, i - 1);
-                        i--;
-                        setTimeout(typeLoop, 80);
-                    } else {
-                        typingForward = true;
-                        setTimeout(typeLoop, 600); // Pause before typing again
-                    }
+            function typeOnce() {
+                if (i < name.length) {
+                    target.textContent += name.charAt(i);
+                    i++;
+                    setTimeout(typeOnce, 260);
                 }
             }
-            window.addEventListener('DOMContentLoaded', typeLoop);
+            window.addEventListener('DOMContentLoaded', typeOnce);
 
             // PDF Modal logic
             function openPDFModal(pdfUrl) {

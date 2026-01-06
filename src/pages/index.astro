@@ -176,21 +176,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>Projects</h2>
         <div class="projects-grid">
             <div class="project-card fade-in">
-                <h3>🖥️ Linux Network Performance Evaluation</h3>
-                <p>R&D project evaluating network performance metrics like delay, jitter, throughput, and packet loss on IPv4/IPv6 with TCP/UDP. Used Bash scripting and DITG tool for automation and data analysis. <span class="project-sign">(Grade: A)</span></p>
-                <a href="#" class="project-link">View Details &rarr;</a>
+                <div class="project-badge">
+                    <img src="/projects/network-performance-evaluation/project-logo.png" alt="Project Logo" />
+                </div>
+                <div class="project-card-media">
+                    <img src="/projects/network-performance-evaluation/banner.jpg" alt="Network Eval" />
+                </div>
+                <div class="project-card-body">
+                    <h3>Linux Network Performance Evaluation</h3>
+                    <p>R&amp;D project evaluating delay, jitter, throughput and packet loss across Fedora, Ubuntu and Kali Linux using D-ITG and automation scripts.</p>
+                    <div class="project-card-footer">
+                        <a href="/network-performance-evaluation" class="project-link btn btn-secondary">View Project</a>
+                    </div>
+                </div>
             </div>
 
             <div class="project-card fade-in" style="animation-delay: 0.1s;">
-                <h3>🔍 Vulnerability Assessment</h3>
-                <p>Performed MySQL and HTTP vulnerability assessments on Windows Server 2016 using Metasploit in Kali Linux. Implemented basic cryptographic techniques for secure communication. <span class="project-sign">(Grade: A+)</span></p>
-                <a href="#" class="project-link">Explore &rarr;</a>
-            </div>
-
-            <div class="project-card fade-in" style="animation-delay: 0.2s;">
-                <h3>🛡️ Windows Server & Network Setup</h3>
-                <p>Designed and configured a network architecture with Active Directory, DNS, DHCP on Windows Server 2012R2. Automated user/group management via PowerShell scripts. <span class="project-sign">(Grade: A+)</span></p>
-                <a href="#contact" class="project-link">Get Notified &rarr;</a>
+                <div class="project-badge">
+                    <img src="https://cdn.brandfetch.io/idu5KIKDYg/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1763570042932" alt="Pi-hole Logo" />
+                </div>
+                <div class="project-card-media">
+                    <img src="https://raw.githubusercontent.com/cyber-wpmm/Pi-Hole/main/images/Dashboard.png" alt="Pi-hole Dashboard" />
+                </div>
+                <div class="project-card-body">
+                    <h3>Pi-hole (Docker)</h3>
+                    <p>Pi-hole deployed in Docker for network-wide ad blocking — static IP setup, Docker Compose, and blocklist management.</p>
+                    <div class="project-card-footer">
+                        <a href="/pihole" class="project-link btn btn-secondary">View Project</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -574,5 +588,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
             </div>
         </div>
+    
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTopHome" title="Back to top">↑</button>
+
+    <script>
+        // Scroll-to-top for Home page
+        (function() {
+            const btn = document.getElementById('scrollToTopHome');
+            if (!btn) return;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
+            });
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        })();
+    </script>
 </BaseLayout>
 

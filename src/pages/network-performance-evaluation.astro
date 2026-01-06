@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Linux Network Performance Evaluation" description="Project showcase: Network Performance Evaluation on Linux Operating Systems">
+  <nav>
+    <div class="nav-content">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="/" class="logo" style="text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 0.4em;">
+          <img src="/favicon.svg" alt="Logo" style="height: 1.7em; width: auto; vertical-align: middle; display: inline-block; margin-left: 0.1em;" />
+        </a>
+        <a href="/#projects" style="text-decoration: none; color: #00FF8C; font-size: 0.95rem; transition: color 0.3s;">← Back</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#goals">Goals</a>
+        <a href="#objectives">Objectives</a>
+        <a href="#network-diagram">Network</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#technologies">Technologies</a>
+        <a href="#poster">Poster</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-content" style="display: flex; align-items: center; justify-content: flex-start; gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+      <div style="flex: 1; text-align: left;">
+        <h1>Network Performance Evaluation</h1>
+        <div class="tag">// Linux Operating Systems</div>
+        <p class="subtitle">Benchmarking Fedora, Ubuntu & Kali Linux as Software Routers</p>
+        <div class="cta-buttons">
+          <a href="https://linux-network-performance-evaluation.github.io/" class="btn btn-secondary" target="_blank">Project Website</a>
+          <button id="viewPosterBtn" class="btn btn-secondary" style="cursor: pointer;">View Poster</button>
+        </div>
+      </div>
+      <div style="flex: 1; display: flex; justify-content: center;">
+        <img src="/projects/network-performance-evaluation/project-logo.png" alt="Project Logo" style="max-width: 280px; border-radius: 12px; background: #fff; padding: 1rem;" />
+      </div>
+    </div>
+  </section>
+
+  <div class="project-page">
+    <!-- Project Goals -->
+    <section id="goals">
+      <h2>Project Goals</h2>
+      <p>The goal of this project is to test the performance of 3 latest Linux-based Operating System distributions – <strong>Fedora OS</strong>, <strong>Ubuntu</strong>, and <strong>Kali Linux</strong>. These operating systems were configured as software routers before running the tests. The <strong>D-ITG tool</strong> was utilized to generate test traffic.</p>
+    </section>
+
+    <!-- Objectives -->
+    <section id="objectives">
+      <h2>Objectives</h2>
+      <ul>
+        <li>Configure the Operating Systems as routers</li>
+        <li>Use <strong>TCP</strong> and <strong>UDP</strong> as transmission protocols</li>
+        <li>Test on both <strong>IPv4</strong> and <strong>IPv6</strong></li>
+        <li>Test across <strong>12 packet sizes</strong>: 128, 256, 384, 512, 640, 768, 896, 1024, 1152, 1280, 1408, 1536 Bytes</li>
+        <li>Measure performance metrics: <strong>Throughput</strong>, <strong>Delay</strong>, <strong>Jitter</strong>, and <strong>Packet Loss</strong></li>
+        <li>Run each test at least <strong>10 times</strong> for accuracy; re-run tests outside <strong>95% confidence interval</strong></li>
+      </ul>
+    </section>
+
+    <!-- Network Diagram -->
+    <section id="network-diagram">
+      <h2>Network Topology</h2>
+      <img src="/projects/network-performance-evaluation/Network%20Diagram.png" alt="Network Diagram" class="white-bg clickable-image" data-image="/projects/network-performance-evaluation/Network%20Diagram.png" />
+    </section>
+
+    <!-- STLC Methodology -->
+    <section id="methodology">
+      <h2>STLC Methodology</h2>
+      <p>We followed the <strong>Software Testing Life Cycle (STLC)</strong> to ensure a structured and repeatable testing process.</p>
+      <img src="/projects/network-performance-evaluation/STLC%20model.png" alt="STLC Model" class="white-bg clickable-image" data-image="/projects/network-performance-evaluation/STLC%20model.png" style="max-width: 600px;" />
+    </section>
+
+    <!-- Technologies Used -->
+    <section id="technologies">
+      <h2>Technologies & Tools</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3>Operating Systems</h3>
+          <p>Fedora, Ubuntu, Kali Linux</p>
+        </div>
+        <div class="tech-card">
+          <h3>Traffic Generator</h3>
+          <p>D-ITG (Distributed Internet Traffic Generator)</p>
+        </div>
+        <div class="tech-card">
+          <h3>Protocols</h3>
+          <p>TCP, UDP over IPv4 and IPv6</p>
+        </div>
+        <div class="tech-card">
+          <h3>Analysis</h3>
+          <p>Statistical analysis with 95% confidence interval</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Poster -->
+    <section id="poster">
+      <h2>Project Poster</h2>
+      <img src="/projects/network-performance-evaluation/poster.svg" alt="Final Project Poster" class="clickable-image" data-image="/projects/network-performance-evaluation/poster.svg" />
+    </section>
+  </div>
+
+  <!-- Image Modal -->
+  <div class="image-modal" id="imageModal">
+    <div class="image-modal-content">
+      <button class="close-image-modal" id="closeImageModal">&times;</button>
+      <img id="modalImage" src="" alt="Enlarged image" />
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" id="scrollToTop" title="Back to top">↑</button>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+    }
+
+    // Image modal functionality
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeBtn = document.getElementById('closeImageModal');
+    const clickableImages = document.querySelectorAll('.clickable-image');
+    const viewPosterBtn = document.getElementById('viewPosterBtn');
+
+    function openImageModal(src) {
+      modalImage.src = src;
+      imageModal.style.display = 'flex';
+    }
+
+    function closeImageModal() {
+      imageModal.style.display = 'none';
+      modalImage.src = '';
+    }
+
+    // Add click listeners to all clickable images
+    clickableImages.forEach(img => {
+      img.addEventListener('click', () => {
+        openImageModal(img.dataset.image);
+      });
+    });
+
+    // View Poster button
+    if (viewPosterBtn) {
+      viewPosterBtn.addEventListener('click', () => {
+        openImageModal('/projects/network-performance-evaluation/poster.svg');
+      });
+    }
+
+    // Close button
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeImageModal);
+    }
+
+    // Close modal when clicking outside the image
+    if (imageModal) {
+      imageModal.addEventListener('click', (e) => {
+        if (e.target === imageModal) {
+          closeImageModal();
+        }
+      });
+    }
+
+    // Scroll to Top Button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    if (scrollToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      });
+
+      scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // Close nav menu when a link is clicked
+    const navLinkElements = document.querySelectorAll('.nav-links a');
+    navLinkElements.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</BaseLayout>

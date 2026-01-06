@@ -1,0 +1,509 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Pi-hole (Docker) Deployment" description="Project: Pi-hole deployed in Docker - network-wide ad blocking solution">
+  <nav>
+    <div class="nav-content">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="/" class="logo" style="text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 0.4em;">
+          <img src="/favicon.svg" alt="Logo" style="height: 1.7em; width: auto; vertical-align: middle; display: inline-block; margin-left: 0.1em;" />
+        </a>
+        <a href="/#projects" style="text-decoration: none; color: #00FF8C; font-size: 0.95rem; transition: color 0.3s;">← Back</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#overview">Overview</a>
+        <a href="#prerequisites">Prerequisites</a>
+        <a href="#setup">Setup Steps</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#resources">Resources</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-content" style="display: flex; align-items: center; justify-content: flex-start; gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+      <div style="flex: 1; text-align: left;">
+        <h1>Pi-hole Docker Deployment</h1>
+        <div class="tag">// Network-wide Ad Blocking</div>
+        <p class="subtitle">Deploy Pi-hole in Docker containers for comprehensive network security and ad blocking</p>
+      </div>
+      <div style="flex: 1; display: flex; justify-content: center;">
+        <img src="https://cdn.brandfetch.io/idu5KIKDYg/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1763570042932" alt="Pi-hole Logo" style="height: 280px; width: 280px; border-radius: 12px; background: #fff; padding: 1rem;" />
+      </div>
+    </div>
+  </section>
+
+  <div class="project-page">
+    <!-- Dashboard Banner -->
+    <img 
+      src="https://raw.githubusercontent.com/cyber-wpmm/Pi-Hole/main/images/Dashboard.png"
+      alt="Pi-hole Dashboard"
+      style="
+        width: 100%;
+        max-width: 100%;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 255, 140, 0.1);
+      "
+    />
+
+    <!-- Overview -->
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>This guide covers the complete installation and configuration of Pi-hole on a Raspberry Pi using Docker. It includes:</p>
+      <ul>
+        <li>Setting up a static IP address</li>
+        <li>Docker and Docker Compose installation</li>
+        <li>Pi-hole container deployment</li>
+        <li>Adding comprehensive blocklists</li>
+        <li>Client DNS configuration</li>
+      </ul>
+    </section>
+
+    <!-- Prerequisites -->
+    <section id="prerequisites">
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>Raspberry Pi with Linux OS installed (Ubuntu Server or Raspberry Pi OS)</li>
+        <li>Valid internet connection (Ethernet or Wi-Fi)</li>
+        <li>SSH access to the Pi</li>
+        <li>Basic command line knowledge</li>
+      </ul>
+
+      <p><strong>Tip:</strong> When using Raspberry Pi Imager, pre-configure Wi-Fi and credentials using <strong>Ctrl + Shift + X</strong> (Windows) or <strong>Command + Shift + X</strong> (macOS) before flashing.</p>
+    </section>
+
+    <!-- Setup Guide -->
+    <section id="setup">
+      <h2>Setup Guide</h2>
+      
+      <div style="
+        background: rgba(0, 255, 140, 0.05);
+        border-left: 4px solid var(--accent-color, #00FF8C);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Step 1: Initial Setup and IP Configuration</h3>
+        <p><strong>Finding Your Pi's IP Address:</strong></p>
+        <p><strong>Option 1 - Through Router:</strong></p>
+        <ul>
+          <li>Log into your router's web interface (usually <code>192.168.0.1</code> or <code>192.168.1.1</code>)</li>
+          <li>Look for "DHCP Clients" or "Connected Devices"</li>
+          <li>Find your Pi's IP address</li>
+        </ul>
+        <p><strong>Option 2 - Direct Access:</strong></p>
+        <pre style="background-color: #1e1e1e; padding: 1.5rem; border-radius: 4px; overflow-x: auto; border-left: 4px solid var(--accent-color, #00FF8C); font-size: 1.05em; line-height: 1.6;"><code style="color: #d4d4d4; font-family: 'Courier New', monospace;">ip a
+<span style="color: #6a9955;"># or</span>
+ifconfig</code></pre>
+
+        <p><strong>Connecting via SSH:</strong></p>
+        <pre style="background-color: #1e1e1e; padding: 1.5rem; border-radius: 4px; overflow-x: auto; border-left: 4px solid var(--accent-color, #00FF8C); font-size: 1.05em; line-height: 1.6;"><code style="color: #d4d4d4; font-family: 'Courier New', monospace;"><span style="color: #569cd6;">ssh</span> username@ip_address</code></pre>
+
+        <p><strong>Update System:</strong></p>
+        <pre style="background-color: #1e1e1e; padding: 1.5rem; border-radius: 4px; overflow-x: auto; border-left: 4px solid var(--accent-color, #00FF8C); font-size: 1.05em; line-height: 1.6;"><code style="color: #d4d4d4; font-family: 'Courier New', monospace;"><span style="color: #569cd6;">sudo apt</span> update <span style="color: #569cd6;">&&</span> <span style="color: #569cd6;">sudo apt</span> upgrade -y</code></pre>
+      </div>
+
+      <div style="
+        background: rgba(0, 255, 140, 0.05);
+        border-left: 4px solid var(--accent-color, #00FF8C);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Step 2: Setting Static IP Address</h3>
+        <p>A static IP ensures Pi-hole remains accessible at the same address.</p>
+        
+        <p><strong>Method 1: Ubuntu Server (Using Netplan)</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>sudo nano /etc/netplan/50-cloud-init.yaml</code></pre>
+
+        <p><strong>For Ethernet connection (eth0):</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses: [192.168.10.50/24]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.0.1
+      nameservers:
+        addresses: [1.1.1.1, 8.8.8.8]</code></pre>
+
+        <p><strong>Apply changes:</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>sudo netplan apply
+ip a
+ping google.com</code></pre>
+
+        <p><strong>Method 2: Raspberry Pi OS (Using NetworkManager)</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>nmcli connection show
+nmcli connection modify "Wired connection 1" ipv4.addresses 192.168.1.100/24
+nmcli connection modify "Wired connection 1" ipv4.gateway 192.168.1.1
+nmcli connection modify "Wired connection 1" ipv4.dns "8.8.8.8 1.1.1.1"
+nmcli connection modify "Wired connection 1" ipv4.method manual
+nmcli connection down "Wired connection 1"
+nmcli connection up "Wired connection 1"</code></pre>
+      </div>
+
+      <div style="
+        background: rgba(0, 255, 140, 0.05);
+        border-left: 4px solid var(--accent-color, #00FF8C);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Step 3: Installing Docker</h3>
+        <p><strong>Install Docker using the official script:</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER
+sudo reboot</code></pre>
+
+        <p><strong>Verify Installation:</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>docker --version
+docker compose version</code></pre>
+      </div>
+
+      <div style="
+        background: rgba(0, 255, 140, 0.05);
+        border-left: 4px solid var(--accent-color, #00FF8C);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Step 4: Pi-hole Docker Setup</h3>
+        <p><strong>Create Pi-hole Directory:</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>mkdir ~/pihole
+cd ~/pihole</code></pre>
+
+        <p><strong>Create Docker Compose configuration:</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+    environment:
+      TZ: 'Pacific/Auckland'
+      FTLCONF_webserver_api_password: 'YourSecurePassword'
+      FTLCONF_dns_listeningMode: 'all'
+    volumes:
+      - './etc-pihole:/etc/pihole'
+      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart: unless-stopped</code></pre>
+
+        <p><strong>Start Pi-hole Container:</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>docker compose up -d
+docker ps</code></pre>
+
+        <p><strong>Access Web Interface:</strong></p>
+        <p>Open browser and navigate to: <code>http://192.168.10.50/admin</code> (replace with your Pi's static IP)</p>
+      </div>
+
+      <div style="
+        background: rgba(0, 255, 140, 0.05);
+        border-left: 4px solid var(--accent-color, #00FF8C);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Step 5: Adding Blocklists</h3>
+        <p><strong>Method 1: Via SQLite (Bulk Import)</strong></p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>sudo apt install sqlite3
+sudo sqlite3 ~/pihole/etc-pihole/gravity.db
+
+INSERT OR IGNORE INTO adlist (address) VALUES 
+('https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts'),
+('https://adaway.org/hosts.txt'),
+('https://v.firebog.net/hosts/AdguardDNS.txt'),
+('https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext'),
+('https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt');
+
+.exit
+docker exec -it pihole pihole -g</code></pre>
+
+        <p><strong>Method 2: Via Web Interface</strong></p>
+        <ol>
+          <li>Go to <strong>Adlists</strong> in the web interface</li>
+          <li>Add blocklist URLs one by one</li>
+          <li>Click <strong>Tools</strong> → <strong>Update Gravity</strong></li>
+        </ol>
+
+        <p><strong>Recommended Blocklist Resources:</strong></p>
+        <ul>
+          <li><a href="https://github.com/hagezi/dns-blocklists" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">Hagezi DNS Blocklists</a></li>
+          <li><a href="https://github.com/r0xd4n3t/pihole-adblock-lists" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">r0xd4n3t's Pi-hole Lists</a></li>
+          <li><a href="https://firebog.net/" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">Firebog Blocklists</a></li>
+        </ul>
+      </div>
+
+      <div style="
+        background: rgba(0, 255, 140, 0.05);
+        border-left: 4px solid var(--accent-color, #00FF8C);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Step 6: Configuring DNS Clients</h3>
+        <p><strong>Option 1: Configure Router (Recommended)</strong></p>
+        <ol>
+          <li>Log into router's web interface</li>
+          <li>Find <strong>DHCP Settings</strong> or <strong>LAN Settings</strong></li>
+          <li>Set <strong>Primary DNS</strong> to Pi's IP address (e.g., <code>192.168.10.50</code>)</li>
+          <li>Optionally set <strong>Secondary DNS</strong> to <code>8.8.8.8</code></li>
+          <li>Save and reboot router</li>
+        </ol>
+
+        <p><strong>Option 2: Configure Individual Devices</strong></p>
+        <p><strong>For Windows:</strong></p>
+        <ol>
+          <li>Open <strong>Network & Internet Settings</strong></li>
+          <li>Click <strong>Change adapter options</strong></li>
+          <li>Right-click your network → <strong>Properties</strong></li>
+          <li>Select <strong>Internet Protocol Version 4 (TCP/IPv4)</strong></li>
+          <li>Choose <strong>Use the following DNS server addresses</strong></li>
+          <li>Enter Pi's IP: <code>192.168.10.50</code></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section id="troubleshooting">
+      <h2>Troubleshooting</h2>
+
+      <div style="
+        background: rgba(255, 100, 100, 0.05);
+        border-left: 4px solid #ff6464;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Password Not Working</h3>
+        <p>If you can't log in with the password set in docker-compose.yml:</p>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>docker exec -it pihole /bin/bash
+pihole setpassword YourNewPassword
+exit</code></pre>
+      </div>
+
+      <div style="
+        background: rgba(255, 100, 100, 0.05);
+        border-left: 4px solid #ff6464;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Port 53 Already in Use</h3>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>sudo ss -tulpn | grep :53
+
+# If systemd-resolved is using it
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved</code></pre>
+      </div>
+
+      <div style="
+        background: rgba(255, 100, 100, 0.05);
+        border-left: 4px solid #ff6464;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Container Won't Start</h3>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>docker logs pihole
+docker restart pihole</code></pre>
+      </div>
+
+      <div style="
+        background: rgba(255, 100, 100, 0.05);
+        border-left: 4px solid #ff6464;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">DNS Not Working on Clients</h3>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>nslookup google.com 192.168.10.50
+docker exec -it pihole pihole -t</code></pre>
+      </div>
+
+      <div style="
+        background: rgba(255, 100, 100, 0.05);
+        border-left: 4px solid #ff6464;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+      ">
+        <h3 style="margin-top: 0;">Web Interface Not Accessible</h3>
+        <pre style="background-color: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>docker ps
+ip a
+curl http://localhost/admin</code></pre>
+      </div>
+    </section>
+
+    <!-- What I Have Learned -->
+    <section id="resources" style="margin-bottom: 3rem;">
+      <h2>What I Have Learned</h2>
+      <p>Through this project, I have gained valuable insights into:</p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <strong>Networking Basics</strong>
+          <p>Understanding static IP configuration and DNS management.</p>
+        </div>
+        <div class="tech-card">
+          <strong>Docker</strong>
+          <p>Setting up and managing containers for efficient application deployment.</p>
+        </div>
+        <div class="tech-card">
+          <strong>Pi-hole</strong>
+          <p>Deploying and configuring Pi-hole as a network-wide ad blocker.</p>
+        </div>
+        <div class="tech-card">
+          <strong>Automation</strong>
+          <p>Writing scripts to simplify repetitive tasks and manage containers.</p>
+        </div>
+        <div class="tech-card">
+          <strong>Troubleshooting</strong>
+          <p>Diagnosing and resolving common issues related to DNS, Docker, and Pi-hole.</p>
+        </div>
+        <div class="tech-card">
+          <strong>System Administration</strong>
+          <p>Enhanced skills in scripting and network security.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Resources -->
+    <section style="margin-bottom: 3rem;">
+      <h2>Additional Resources</h2>
+      
+      <h3>Official Documentation</h3>
+      <ul>
+        <li><a href="https://docs.pi-hole.net/" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">Pi-hole Documentation</a></li>
+        <li><a href="https://github.com/pi-hole/docker-pi-hole" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">Docker Pi-hole GitHub</a></li>
+        <li><a href="https://github.com/cyber-wpmm/Pi-Hole" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">Project Repository</a></li>
+      </ul>
+
+      <h3>Blocklist Collections</h3>
+      <ul>
+        <li><a href="https://github.com/hagezi/dns-blocklists" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">Hagezi DNS Blocklists</a></li>
+        <li><a href="https://github.com/r0xd4n3t/pihole-adblock-lists" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">r0xd4n3t's Pi-hole Lists</a></li>
+        <li><a href="https://firebog.net/" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">Firebog Blocklists</a></li>
+        <li><a href="https://blocklist.site/" target="_blank" style="color: var(--accent-color, #00FF8C); text-decoration: underline;">The Block List Project</a></li>
+      </ul>
+    </section>
+
+    <!-- Useful Commands -->
+    <section style="margin-bottom: 3rem;">
+      <h2>Useful Commands</h2>
+      <pre style="background-color: #1e1e1e; padding: 1.5rem; border-radius: 4px; overflow-x: auto; border-left: 4px solid var(--accent-color, #00FF8C); font-size: 1.1em; line-height: 1.6;"><code style="color: #d4d4d4; font-family: 'Courier New', monospace;"><span style="color: #6a9955;"># Update Pi-hole</span>
+<span style="color: #569cd6;">docker pull</span> pihole/pihole:latest
+<span style="color: #569cd6;">docker compose</span> down
+<span style="color: #569cd6;">docker compose</span> up -d
+
+<span style="color: #6a9955;"># View live query log</span>
+<span style="color: #569cd6;">docker exec</span> -it pihole pihole -t
+
+<span style="color: #6a9955;"># Update gravity</span>
+<span style="color: #569cd6;">docker exec</span> -it pihole pihole -g
+
+<span style="color: #6a9955;"># Restart DNS service</span>
+<span style="color: #569cd6;">docker exec</span> -it pihole pihole restartdns
+
+<span style="color: #6a9955;"># Check Pi-hole status</span>
+<span style="color: #569cd6;">docker exec</span> -it pihole pihole status</code></pre>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" style="
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--accent-color, #00FF8C);
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 255, 140, 0.3);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    ">
+      ↑
+    </button>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    color: var(--text-color);
+  }
+
+  :global(pre) {
+    background-color: #1e1e1e !important;
+    padding: 1.5rem !important;
+    border-radius: 4px !important;
+    overflow-x: auto !important;
+    border-left: 4px solid var(--accent-color, #00FF8C) !important;
+    font-size: 1.05em !important;
+    line-height: 1.6 !important;
+  }
+
+  :global(code) {
+    color: #d4d4d4 !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: inherit !important;
+  }
+</style>
+
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const nav = document.querySelector('nav');
+  
+  if (navToggle && nav) {
+    navToggle.addEventListener('click', () => {
+      nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Scroll to Top functionality
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollToTopBtn.style.display = 'flex';
+    } else {
+      scrollToTopBtn.style.display = 'none';
+    }
+  });
+
+  scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+    

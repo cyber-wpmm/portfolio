@@ -1,4 +1,315 @@
-/* Distinct Cyber Profiles Section */
+/* ======================== */
+/* Project Page Styles      */
+/* ======================== */
+.project-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #fff;
+}
+
+.project-page section {
+    background: linear-gradient(135deg, #1e2227 0%, #23272e 100%);
+    border: 1px solid rgba(0, 255, 140, 0.15);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-page section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 255, 140, 0.12);
+}
+
+.project-page h2 {
+    color: #00FF8C;
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(0, 255, 140, 0.3);
+    display: block;
+}
+
+.project-page h2::before {
+    content: '// ';
+    color: #00D9FF;
+    font-weight: normal;
+}
+
+.project-page h2::after {
+    display: none;
+}
+
+.project-page p {
+    color: #c5c5c5;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+.project-page strong {
+    color: #00D9FF;
+    font-weight: 600;
+}
+
+.project-page ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1rem 0;
+}
+
+.project-page ul li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.9rem;
+    color: #c5c5c5;
+    line-height: 1.6;
+}
+
+.project-page ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #00FF8C;
+    font-size: 1.1rem;
+}
+
+.project-page img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem auto;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 140, 0.2);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* White background for images with transparency */
+.project-page img.white-bg {
+    background: #fff;
+    padding: 1rem;
+}
+
+/* Clickable images styling */
+.project-page img.clickable-image {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-page img.clickable-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 30px rgba(0, 255, 140, 0.2);
+}
+
+/* Network diagram size constraint */
+.project-page #network-diagram img {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Objectives Grid Layout */
+.project-page #objectives ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.project-page #objectives ul li {
+    background: rgba(0, 255, 140, 0.05);
+    padding: 1rem 1rem 1rem 2.2rem;
+    border-radius: 8px;
+    border-left: 3px solid #00FF8C;
+}
+
+/* Technologies Cards */
+.project-page .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.project-page .tech-card {
+    background: rgba(0, 217, 255, 0.05);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-page .tech-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 217, 255, 0.15);
+}
+
+.project-page .tech-card h3 {
+    color: #00D9FF;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.project-page .tech-card p {
+    color: #fff;
+    font-size: 1.05rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Methodology Steps */
+.project-page #methodology ul li {
+    background: rgba(0, 255, 140, 0.03);
+    padding: 0.8rem 1rem 0.8rem 2.2rem;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    border: 1px solid rgba(0, 255, 140, 0.1);
+}
+
+/* Full-width poster image */
+.project-page #poster img {
+    max-width: 100%;
+    border: 2px solid rgba(0, 255, 140, 0.3);
+}
+
+/* Image Modal Styles */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.close-image-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #00FF8C;
+    border: none;
+    color: #181c1f;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+    z-index: 10001;
+}
+
+.close-image-modal:hover {
+    background: #00D9FF;
+    color: #181c1f;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #00FF8C;
+    border: none;
+    color: #181c1f;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 255, 140, 0.3);
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 1001;
+}
+
+.scroll-to-top.show {
+    display: flex;
+}
+
+.scroll-to-top:hover {
+    background: #00D9FF;
+    transform: scale(1.1);
+}
+
+/* Project Hero adjustments for project pages */
+.project-hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.project-hero-content > div:first-child {
+    flex: 1;
+    min-width: 300px;
+}
+
+.project-hero-content > div:last-child {
+    flex: 0 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-page {
+        padding: 1rem;
+    }
+    
+    .project-page section {
+        padding: 1.5rem;
+    }
+    
+    .project-page h2 {
+        font-size: 1.4rem;
+    }
+    
+    .project-page #objectives ul,
+    .project-page #technologies ul {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .project-hero-content > div:first-child {
+        text-align: center;
+    }
+}
 .cyber-profiles-container {
     background: linear-gradient(90deg, #181c1f 60%, #23272e 100%);
     border: 2px solid #00FF8C;
@@ -433,6 +744,10 @@
     --border-color: #333333;
     --shadow: rgba(0, 255, 140, 0.3);
     --nav-bg: rgba(26, 26, 26, 0.95);
+}
+
+html {
+    scroll-padding-top: 80px;
 }
 
 * {
@@ -988,47 +1303,146 @@ h2::after {
 }
 
 .projects-grid {
+    margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
 }
 
 .project-card {
-    background: #2a2a2a;
-    border: 1px solid rgba(0, 255, 140, 0.3);
-    border-radius: 10px;
-    padding: 2rem;
-    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: linear-gradient(180deg, #1f2326 0%, #26292d 100%);
+    border: 1px solid rgba(0,255,140,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+    position: relative; /* needed for overlay badge positioning */
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(0, 255, 140, 0.3);
-    will-change: transform;
+.project-card-media {
+    width: 100%;
+    height: 180px;
+    display: block;
+}
+
+.project-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Small overlapping logo badge */
+.project-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 84px;
+    height: 84px;
+    background: #fff;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    padding: 8px;
+    z-index: 5;
+}
+
+.project-badge img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .project-badge {
+        width: 64px;
+        height: 64px;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+/* Badge hover / focus animations */
+.project-badge {
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
+    transform-origin: center;
+}
+
+.project-badge:hover,
+.project-card:hover .project-badge {
+    transform: translateY(-6px) scale(1.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+.project-badge:focus,
+.project-badge:focus-visible {
+    outline: 3px solid rgba(0,255,140,0.12);
+    transform: translateY(-6px) scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-badge,
+    .project-badge img {
+        transition: none !important;
+        transform: none !important;
+    }
 }
 
 .project-card h3 {
     color: #00FF8C;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    margin: 0 0 0.35rem 0;
+    font-size: 1.05rem;
 }
 
 .project-card p {
+    color: #cfcfcf;
+    line-height: 1.5;
+    margin: 0.25rem 0 0.8rem 0;
+    flex: 1 1 auto;
+}
+
+.project-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.6rem;
+}
+
+.project-sign {
     color: #aaa;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
 }
 
 .project-link {
-    color: #00D9FF;
     text-decoration: none;
+    color: #00D9FF;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 .project-link:hover {
     color: #00FF8C;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-card {
+        flex-direction: row;
+    }
 }
 
 footer {

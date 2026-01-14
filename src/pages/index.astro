@@ -1,11 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get latest 3 blog posts for homepage preview
+const allPosts = await getCollection('blog', ({ data }) => data.draft !== true);
+const latestPosts = allPosts
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, 3);
 ---
 
 <BaseLayout title="Win's Portfolio" description="Portfolio showcasing projects, skills, and experiences">
     <nav>
         <div class="nav-content">
-            <a href="#hero" class="logo" style="text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 0.4em;">
+            <a href="#" class="logo" id="logoLink" style="text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 0.4em;">
                 <img src="/favicon.svg" alt="Logo" style="height: 1.7em; width: auto; vertical-align: middle; display: inline-block; margin-left: 0.1em;" />
             </a>
             <div class="hamburger" id="hamburger">
@@ -23,6 +30,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <a href="#blog">Blog</a>
                 <a href="#contact">Contact</a>
             </div>
+            <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
         </div>
     </nav>
 
@@ -109,7 +132,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section id="skills">
         <h2>Skills</h2>
         <div class="skills-grid">
-            <div class="skill-category card-hover">
+            <div class="skill-category card-hover stagger-card">
                 <h3 class="skill-title">Networking</h3>
                 <ul class="skill-list">
                     <li>Cisco Devices</li>
@@ -120,7 +143,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <li>NAT & DHCP</li>
                 </ul>
             </div>
-            <div class="skill-category card-hover" style="animation-delay: 0.1s;">
+            <div class="skill-category card-hover stagger-card">
                 <h3 class="skill-title">Languages</h3>
                 <ul class="skill-list">
                     <li>Python</li>
@@ -131,7 +154,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <li>PHP</li>
                 </ul>
             </div>
-            <div class="skill-category card-hover" style="animation-delay: 0.2s;">
+            <div class="skill-category card-hover stagger-card">
                 <h3 class="skill-title">Pentest Tools</h3>
                 <ul class="skill-list">
                     <li>Nmap</li>
@@ -142,7 +165,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <li>Netcat</li>
                 </ul>
             </div>
-            <div class="skill-category card-hover" style="animation-delay: 0.3s;">
+            <div class="skill-category card-hover stagger-card">
                 <h3 class="skill-title">Developer Tools</h3>
                 <ul class="skill-list">
                     <li>Git</li>
@@ -175,7 +198,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section id="projects">
         <h2>Projects</h2>
         <div class="projects-grid">
-            <div class="project-card fade-in">
+            <div class="project-card stagger-card">
                 <div class="project-badge">
                     <img src="/projects/network-performance-evaluation/project-logo.png" alt="Project Logo" />
                 </div>
@@ -191,7 +214,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
             </div>
 
-            <div class="project-card fade-in" style="animation-delay: 0.1s;">
+            <div class="project-card stagger-card">
                 <div class="project-badge">
                     <img src="https://cdn.brandfetch.io/idu5KIKDYg/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1763570042932" alt="Pi-hole Logo" />
                 </div>
@@ -339,130 +362,179 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <section id="certifications">
         <h2>Certifications</h2>
-        <div class="certifications-grid">
-            <div class="cert-card fade-in" style="animation-delay: 0.2s;">
-                <div class="cert-icon"><img src="/Images/Badges/cyberops.png" alt="CyberOps Associate Badge" /></div>
-                <div class="cert-badge">
-                    <div class="cert-badge-inner">
-                        <div class="cert-title">CybeOps</div>
-                        <div class="cert-issuer">Cisco</div>
-                    </div>
-                </div>
-                <h3>CyberOps Associate</h3>
-                <p class="cert-description">
-                    Validates practical skills in threat detection, incident response, and security monitoring as part of a modern SOC team.
-                </p>
-                <div class="cert-footer">
-                    <span class="cert-date">Issued Dec 3, 2025</span>
-                    <a href="/Certificates/ccna-cyberops-certificate.pdf" class="cert-link" data-pdf="/Certificates/ccna-cyberops-certificate.pdf">View PDF &rarr;</a>
+        <p class="cert-intro">Click badges to verify on Credly • Click "View PDF" to see full certificate</p>
+        <div class="certifications-grid credly-grid">
+            <!-- CyberOps Associate -->
+            <div class="credly-badge-wrapper stagger-card">
+                <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="8795b497-6f62-45b6-ab3e-139453dae7c3" data-share-badge-host="https://www.credly.com"></div>
+                <div class="credly-info">
+                    <h3>CyberOps Associate</h3>
+                    <p>Threat detection, incident response & SOC operations</p>
+                    <span class="cert-date">Dec 2025</span>
+                    <button class="cert-pdf-btn" data-pdf="/Certificates/ccna-cyberops-certificate.pdf" data-index="0">View PDF →</button>
                 </div>
             </div>
-            <div class="cert-card fade-in" style="animation-delay: 0.3s;">
-                <div class="cert-icon"><img src="/Images/Badges/network-security.png" alt="Network Security Badge" /></div>
-                <div class="cert-badge">
-                    <div class="cert-badge-inner">
-                        <div class="cert-title">Network Security</div>
-                        <div class="cert-issuer">Cisco</div>
-                    </div>
-                </div>
-                <h3>Network Security</h3>
-                <p class="cert-description">
-                    Demonstrates expertise in securing network infrastructure and implementing security protocols to protect data and assets.
-                </p>
-                <div class="cert-footer">
-                    <span class="cert-date">Issued Nov 19, 2025</span>
-                    <a href="/Certificates/ccna-network-security-certificate.pdf" class="cert-link" data-pdf="/Certificates/ccna-network-security-certificate.pdf">View PDF &rarr;</a>
+            
+            <!-- Network Security -->
+            <div class="credly-badge-wrapper stagger-card">
+                <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="91cf8969-2010-4ddf-a14a-4fce25c8fea8" data-share-badge-host="https://www.credly.com"></div>
+                <div class="credly-info">
+                    <h3>Network Security</h3>
+                    <p>Securing infrastructure & implementing security protocols</p>
+                    <span class="cert-date">Nov 2025</span>
+                    <button class="cert-pdf-btn" data-pdf="/Certificates/ccna-network-security-certificate.pdf" data-index="1">View PDF →</button>
                 </div>
             </div>
-
-            <div class="cert-card fade-in">
-                <div class="cert-icon"><img src="/Images/Badges/ccna-enterprise.png" alt="CCNA Enterprise Badge" /></div>
-                <div class="cert-badge">
-                    <div class="cert-badge-inner">
-                        <div class="cert-title">Enterprise Networking</div>
-                        <div class="cert-issuer">Cisco</div>
-                    </div>
-                </div>
-                <h3>Enterprise Network</h3>
-                <p class="cert-description">
-                    Comprehensive certification covering enterprise networking, security protocols, and automation techniques for modern networks.
-                </p>
-                <div class="cert-footer">
-                    <span class="cert-date">Issued Nov 19, 2025</span>
-                    <a href="/Certificates/ccna-enterprise-network-certificate.pdf" class="cert-link" data-pdf="/Certificates/ccna-enterprise-network-certificate.pdf">View PDF &rarr;</a>
+            
+            <!-- Enterprise Network -->
+            <div class="credly-badge-wrapper stagger-card">
+                <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="ba060768-da23-4aec-907d-2b298e098bf4" data-share-badge-host="https://www.credly.com"></div>
+                <div class="credly-info">
+                    <h3>Enterprise Networking</h3>
+                    <p>Enterprise networking, security & automation</p>
+                    <span class="cert-date">Nov 2025</span>
+                    <button class="cert-pdf-btn" data-pdf="/Certificates/ccna-enterprise-network-certificate.pdf" data-index="2">View PDF →</button>
                 </div>
             </div>
-
-            <div class="cert-card fade-in" style="animation-delay: 0.1s;">
-                <div class="cert-icon"><img src="/Images/Badges/ccna-switching.png" alt="CCNA Enterprise Badge" /></div>
-                <div class="cert-badge">
-                    <div class="cert-badge-inner">
-                        <div class="cert-title">Switching</div>
-                        <div class="cert-issuer">Cisco</div>
-                    </div>
-                </div>
-                <h3>CCNA: Switching, Routing, and Wireless Essentials</h3>
-                <p class="cert-description">
-                    Fundamental skills in switching, routing, and wireless networking essentials for building scalable networks.
-                </p>
-                <div class="cert-footer">
-                    <span class="cert-date">Issued Jul 6, 2025</span>
-                    <a href="/Certificates/ccan-switching-certificate.pdf" class="cert-link" data-pdf="/Certificates/ccan-switching-certificate.pdf">View PDF &rarr;</a>
+            
+            <!-- CCNA Switching -->
+            <div class="credly-badge-wrapper stagger-card">
+                <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="47a7c265-1168-4e4a-b90c-6b38c1c89fa4" data-share-badge-host="https://www.credly.com"></div>
+                <div class="credly-info">
+                    <h3>Switching, Routing & Wireless</h3>
+                    <p>Fundamental networking essentials for scalable networks</p>
+                    <span class="cert-date">Jul 2025</span>
+                    <button class="cert-pdf-btn" data-pdf="/Certificates/ccan-switching-certificate.pdf" data-index="3">View PDF →</button>
                 </div>
             </div>
         </div>
+        
+        <!-- Credly Script - loads once -->
+        <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
     </section>
+
+    <!-- Certification PDF Modal -->
+    <div class="cert-pdf-modal" id="certPdfModal">
+        <div class="cert-pdf-modal-content">
+            <div class="cert-pdf-header">
+                <span class="cert-pdf-title" id="certPdfTitle">Certificate</span>
+                <button class="cert-pdf-close" id="certPdfClose">✕ Close</button>
+            </div>
+            <div class="cert-pdf-viewer-container">
+                <button class="cert-pdf-nav cert-pdf-prev" id="certPdfPrev" title="Previous">‹</button>
+                <iframe id="certPdfIframe" src="" allowfullscreen></iframe>
+                <button class="cert-pdf-nav cert-pdf-next" id="certPdfNext" title="Next">›</button>
+            </div>
+            <div class="cert-pdf-counter" id="certPdfCounter">1 / 4</div>
+        </div>
+    </div>
+
+    <script>
+        // Certification PDF Modal Logic
+        (function() {
+            const certPdfs = [
+                { url: '/Certificates/ccna-cyberops-certificate.pdf', title: 'CyberOps Associate' },
+                { url: '/Certificates/ccna-network-security-certificate.pdf', title: 'Network Security' },
+                { url: '/Certificates/ccna-enterprise-network-certificate.pdf', title: 'Enterprise Networking' },
+                { url: '/Certificates/ccan-switching-certificate.pdf', title: 'Switching, Routing & Wireless' }
+            ];
+            
+            let currentIndex = 0;
+            const modal = document.getElementById('certPdfModal');
+            const iframe = document.getElementById('certPdfIframe');
+            const title = document.getElementById('certPdfTitle');
+            const counter = document.getElementById('certPdfCounter');
+            const closeBtn = document.getElementById('certPdfClose');
+            const prevBtn = document.getElementById('certPdfPrev');
+            const nextBtn = document.getElementById('certPdfNext');
+            
+            function showPdf(index) {
+                currentIndex = ((index % certPdfs.length) + certPdfs.length) % certPdfs.length;
+                iframe.src = certPdfs[currentIndex].url;
+                title.textContent = certPdfs[currentIndex].title;
+                counter.textContent = `${currentIndex + 1} / ${certPdfs.length}`;
+            }
+            
+            function openModal(index) {
+                showPdf(index);
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeModal() {
+                modal.classList.remove('active');
+                iframe.src = '';
+                document.body.style.overflow = '';
+            }
+            
+            // Attach click to all PDF buttons
+            document.querySelectorAll('.cert-pdf-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const index = parseInt(btn.getAttribute('data-index'));
+                    openModal(index);
+                });
+            });
+            
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', () => showPdf(currentIndex - 1));
+            nextBtn.addEventListener('click', () => showPdf(currentIndex + 1));
+            
+            // Close on backdrop click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) return;
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') showPdf(currentIndex - 1);
+                if (e.key === 'ArrowRight') showPdf(currentIndex + 1);
+            });
+        })();
+    </script>
 
     <section id="blog">
         <h2>Latest Blog Posts</h2>
         <div class="blog-grid">
-            <div class="blog-card fade-in">
-                <div class="blog-header">
-                    <div class="blog-date">October 15, 2025</div>
-                </div>
-                <div class="blog-body">
-                    <h3>Building Secure Networks <span class="post-sign">— Win Phyo</span></h3>
-                    <div class="blog-tags">
-                        <span class="blog-tag">Networking</span>
-                        <span class="blog-tag">Security</span>
-                        <span class="blog-tag">Automation</span>
+            {latestPosts.map((post, index) => {
+                const formattedDate = post.data.date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                // Calculate reading time
+                const wordCount = post.body.split(/\s+/).length;
+                const readingTime = Math.ceil(wordCount / 200);
+                return (
+                    <div class="blog-card stagger-card">
+                        <div class="blog-header">
+                            <div class="blog-date">{formattedDate}</div>
+                            <div class="blog-reading-time">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                {readingTime} min read
+                            </div>
+                        </div>
+                        <div class="blog-body">
+                            <h3>{post.data.title}</h3>
+                            <div class="blog-tags">
+                                {post.data.tags.slice(0, 3).map((tag: string) => (
+                                    <span class="blog-tag">{tag}</span>
+                                ))}
+                            </div>
+                            <p>{post.data.description}</p>
+                            <a href={`/blog/${post.slug}`} class="project-link">Read More →</a>
+                        </div>
                     </div>
-                    <p>Exploring advanced techniques for network configuration, security implementation, and automation using Cisco technologies and PowerShell...</p>
-                    <a href="#" class="project-link">Read More &rarr;</a>
-                </div>
-            </div>
-
-            <div class="blog-card fade-in" style="animation-delay: 0.1s;">
-                <div class="blog-header">
-                    <div class="blog-date">October 10, 2025</div>
-                </div>
-                <div class="blog-body">
-                    <h3>Ethical Hacking and Penetration Testing</h3>
-                    <div class="blog-tags">
-                        <span class="blog-tag">Cybersecurity</span>
-                        <span class="blog-tag">PenTesting</span>
-                        <span class="blog-tag">CTF</span>
-                    </div>
-                    <p>A deep dive into penetration testing methodologies, vulnerability assessment, and CTF challenges that are shaping modern cybersecurity practices...</p>
-                    <a href="#" class="project-link">Read More &rarr;</a>
-                </div>
-            </div>
-
-            <div class="blog-card fade-in" style="animation-delay: 0.2s;">
-                <div class="blog-header">
-                    <div class="blog-date">October 5, 2025</div>
-                </div>
-                <div class="blog-body">
-                    <h3>Home Lab Adventures</h3>
-                    <div class="blog-tags">
-                        <span class="blog-tag">Docker</span>
-                        <span class="blog-tag">Self-Hosting</span>
-                        <span class="blog-tag">Automation</span>
-                    </div>
-                    <p>Learn how to set up and maintain a personal home lab with Docker containers, VPN, and various self-hosted services for learning and experimentation...</p>
-                    <a href="#" class="project-link">Read More &rarr;</a>
-                </div>
-            </div>
+                );
+            })}
+        </div>
+        <div class="blog-view-all">
+            <a href="/blog" class="btn btn-secondary">View All Posts →</a>
         </div>
     </section>
 
@@ -558,50 +630,150 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 }
             }
             window.addEventListener('DOMContentLoaded', typeOnce);
-
-            // PDF Modal logic
-            function openPDFModal(pdfUrl) {
-                let modal = document.getElementById('pdfModal');
-                let iframe = document.getElementById('pdfIframe');
-                modal.style.display = 'flex';
-                iframe.src = pdfUrl;
-            }
-            function closePDFModal() {
-                let modal = document.getElementById('pdfModal');
-                let iframe = document.getElementById('pdfIframe');
-                modal.style.display = 'none';
-                iframe.src = '';
-            }
-            // Ensure closePDFModal is globally available for inline onclick
-            window.closePDFModal = closePDFModal;
         </script>
 
-        
-
+        <!-- Education PDF Modal (Griffith Documents) -->
         <div class="pdf-modal" id="pdfModal">
             <div class="pdf-modal-content">
-                <button class="close-pdf-btn-rect" onclick="closePDFModal()" title="Close PDF">CLOSE</button>
-                <div class="pdf-modal-viewer-row">
-                    <button id="pdfOverlayPrev" class="pdf-arrow-side">&#8592;</button>
-                    <iframe id="pdfIframe" src="" allowfullscreen></iframe>
-                    <button id="pdfOverlayNext" class="pdf-arrow-side">&#8594;</button>
+                <div class="pdf-modal-header">
+                    <span class="pdf-modal-title" id="eduPdfTitle">Diploma Certificate</span>
+                    <button class="close-pdf-btn-rect" id="eduPdfClose" title="Close PDF">✕ Close</button>
                 </div>
+                <div class="pdf-modal-viewer-row">
+                    <button class="pdf-nav-btn" id="eduPdfPrev" title="Previous">‹</button>
+                    <iframe id="pdfIframe" src="" allowfullscreen></iframe>
+                    <button class="pdf-nav-btn" id="eduPdfNext" title="Next">›</button>
+                </div>
+                <div class="pdf-modal-counter" id="eduPdfCounter">1 / 4</div>
             </div>
         </div>
+
+        <script>
+            // Education PDF Modal Logic (Griffith Documents)
+            (function() {
+                const eduPdfs = [
+                    { url: '/Certificates/griffith-diploma-certificate.pdf', title: 'Diploma Certificate' },
+                    { url: '/Certificates/griffith-dux-award.pdf', title: 'Dux Award' },
+                    { url: '/Certificates/griffith-academic-excellence.pdf', title: 'Academic Excellence Award' },
+                    { url: '/Certificates/griffith-academic-transcript.pdf', title: 'Academic Transcript' }
+                ];
+                
+                let currentEduIndex = 0;
+                const modal = document.getElementById('pdfModal');
+                const iframe = document.getElementById('pdfIframe');
+                const title = document.getElementById('eduPdfTitle');
+                const counter = document.getElementById('eduPdfCounter');
+                const closeBtn = document.getElementById('eduPdfClose');
+                const prevBtn = document.getElementById('eduPdfPrev');
+                const nextBtn = document.getElementById('eduPdfNext');
+                
+                function showEduPdf(index) {
+                    currentEduIndex = ((index % eduPdfs.length) + eduPdfs.length) % eduPdfs.length;
+                    iframe.src = eduPdfs[currentEduIndex].url;
+                    title.textContent = eduPdfs[currentEduIndex].title;
+                    counter.textContent = `${currentEduIndex + 1} / ${eduPdfs.length}`;
+                }
+                
+                window.openPDFModal = function(pdfUrl) {
+                    // Find the index of the PDF, or default to 0
+                    const index = eduPdfs.findIndex(p => p.url === pdfUrl);
+                    showEduPdf(index >= 0 ? index : 0);
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                };
+                
+                window.closePDFModal = function() {
+                    modal.style.display = 'none';
+                    iframe.src = '';
+                    document.body.style.overflow = '';
+                };
+                
+                closeBtn?.addEventListener('click', closePDFModal);
+                prevBtn?.addEventListener('click', () => showEduPdf(currentEduIndex - 1));
+                nextBtn?.addEventListener('click', () => showEduPdf(currentEduIndex + 1));
+                
+                // Close on backdrop click
+                modal?.addEventListener('click', (e) => {
+                    if (e.target === modal) closePDFModal();
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (modal?.style.display !== 'flex') return;
+                    if (e.key === 'Escape') closePDFModal();
+                    if (e.key === 'ArrowLeft') showEduPdf(currentEduIndex - 1);
+                    if (e.key === 'ArrowRight') showEduPdf(currentEduIndex + 1);
+                });
+            })();
+        </script>
     
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTopHome" title="Back to top">↑</button>
+    <!-- Scroll to Top Button with Progress Indicator -->
+    <button class="scroll-to-top" id="scrollToTopHome" title="Back to top">
+        <svg class="progress-ring" viewBox="0 0 56 56">
+            <circle class="progress-ring-circle" cx="28" cy="28" r="26"></circle>
+        </svg>
+        <span class="arrow-icon">↑</span>
+    </button>
 
     <script>
-        // Scroll-to-top for Home page
+        // Enhanced Scroll-to-top with progress indicator
         (function() {
             const btn = document.getElementById('scrollToTopHome');
             if (!btn) return;
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
-            });
+            
+            const progressCircle = btn.querySelector('.progress-ring-circle');
+            const circumference = 2 * Math.PI * 26; // radius = 26
+            
+            if (progressCircle) {
+                progressCircle.style.strokeDasharray = circumference;
+                progressCircle.style.strokeDashoffset = circumference;
+            }
+            
+            function updateProgress() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = scrollTop / docHeight;
+                
+                // Show/hide button
+                if (scrollTop > 300) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+                
+                // Update progress ring
+                if (progressCircle) {
+                    const offset = circumference - (scrollPercent * circumference);
+                    progressCircle.style.strokeDashoffset = offset;
+                }
+            }
+            
+            window.addEventListener('scroll', updateProgress, { passive: true });
             btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         })();
+
+        // Logo click - smooth scroll to top and clear URL hash
+        const logoLink = document.getElementById('logoLink');
+        if (logoLink) {
+            logoLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                history.pushState(null, '', window.location.pathname);
+            });
+        }
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const root = document.documentElement;
+                root.classList.toggle('light-mode');
+                
+                // Save preference
+                const isLight = root.classList.contains('light-mode');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
+        }
     </script>
 </BaseLayout>
 

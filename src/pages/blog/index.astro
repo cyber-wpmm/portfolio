@@ -1,0 +1,204 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Get all non-draft blog posts, sorted by date (newest first)
+const allPosts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort((a, b) => 
+    b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Blog | Win's Portfolio" description="Blog posts about cybersecurity, networking, and tech projects">
+    <section class="blog-listing">
+        <header class="blog-listing-header">
+            <a href="/" class="back-link">← Back to Portfolio</a>
+            <h1>Blog</h1>
+            <p class="blog-listing-intro">Thoughts, tutorials, and lessons learned from my cybersecurity journey.</p>
+        </header>
+        
+        <div class="blog-listing-grid">
+            {sortedPosts.map((post) => {
+                const formattedDate = post.data.date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                // Calculate reading time
+                const wordCount = post.body.split(/\s+/).length;
+                const readingTime = Math.ceil(wordCount / 200);
+                
+                return (
+                    <article class="blog-listing-card stagger-card">
+                        <div class="blog-listing-meta">
+                            <span class="blog-listing-date">{formattedDate}</span>
+                            <span class="blog-listing-reading-time">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                {readingTime} min read
+                            </span>
+                        </div>
+                        <h2>
+                            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                        </h2>
+                        <p>{post.data.description}</p>
+                        <div class="blog-listing-tags">
+                            {post.data.tags.slice(0, 3).map((tag: string) => (
+                                <span class="blog-tag">{tag}</span>
+                            ))}
+                        </div>
+                        <a href={`/blog/${post.slug}`} class="read-more">Read More →</a>
+                    </article>
+                );
+            })}
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    .blog-listing {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 6rem 2rem 4rem;
+    }
+    
+    .back-link {
+        display: inline-block;
+        color: var(--accent-color);
+        text-decoration: none;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        transition: opacity 0.2s;
+    }
+    
+    .back-link:hover {
+        opacity: 0.8;
+    }
+    
+    .blog-listing-header {
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+    
+    .blog-listing-header h1 {
+        font-size: 3rem;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+    }
+    
+    .blog-listing-intro {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+    }
+    
+    .blog-listing-grid {
+        display: grid;
+        gap: 2rem;
+    }
+    
+    .blog-listing-card {
+        background: var(--bg-secondary, rgba(13, 17, 23, 0.8));
+        border: 1px solid var(--border-color, rgba(0, 255, 140, 0.2));
+        border-radius: 12px;
+        padding: 2rem;
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    
+    .blog-listing-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 255, 140, 0.15);
+        border-color: var(--accent-color);
+    }
+    
+    .blog-listing-date {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+    }
+    
+    .blog-listing-meta {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .blog-listing-reading-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+    }
+    
+    .blog-listing-reading-time svg {
+        opacity: 0.7;
+    }
+    
+    .blog-listing-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .blog-listing-card h2 a {
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    
+    .blog-listing-card h2 a:hover {
+        color: var(--accent-color);
+    }
+    
+    .blog-listing-card p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+    
+    .blog-listing-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .blog-tag {
+        background: rgba(0, 255, 140, 0.1);
+        color: var(--accent-color);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        border: 1px solid rgba(0, 255, 140, 0.3);
+    }
+    
+    .read-more {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: opacity 0.2s;
+    }
+    
+    .read-more:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+        .blog-listing-header h1 {
+            font-size: 2rem;
+        }
+        
+        .blog-listing-card {
+            padding: 1.5rem;
+        }
+        
+        .blog-listing-card h2 {
+            font-size: 1.25rem;
+        }
+    }
+</style>

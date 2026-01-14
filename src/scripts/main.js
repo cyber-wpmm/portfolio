@@ -45,6 +45,62 @@ document.querySelectorAll('.skill-category').forEach(category => {
     skillObserver.observe(category);
 });
 
+// === Counter Animation for Stats ===
+function animateCounter(element, target, suffix = '') {
+    const duration = 800;
+    const start = 0;
+    const startTime = performance.now();
+    
+    element.classList.add('counting');
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease out cubic
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * easeOut);
+        
+        element.textContent = current + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target + suffix;
+            element.classList.remove('counting');
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+// Observer for stat counters
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statNumbers = entry.target.querySelectorAll('.stat-number');
+            statNumbers.forEach((stat, index) => {
+                const text = stat.textContent.trim();
+                const hasPlus = text.includes('+');
+                const number = parseInt(text.replace('+', ''));
+                
+                if (!isNaN(number)) {
+                    stat.textContent = '0';
+                    setTimeout(() => {
+                        animateCounter(stat, number, hasPlus ? '+' : '');
+                    }, index * 200);
+                }
+            });
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+// Observe the about-stats container
+document.querySelectorAll('.about-stats').forEach(stats => {
+    statsObserver.observe(stats);
+});
+
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     navLinks.classList.toggle('active');

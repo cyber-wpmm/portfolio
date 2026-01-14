@@ -1,0 +1,301 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 - Page Not Found | Win's Portfolio" description="The page you're looking for doesn't exist">
+    <div class="error-page">
+        <div class="error-content">
+            <div class="glitch-wrapper">
+                <div class="glitch" data-text="404">404</div>
+            </div>
+            <h1 class="error-title">Access Denied</h1>
+            <p class="error-message">The page you're looking for has been moved, deleted, or never existed in this sector.</p>
+            
+            <div class="terminal-box">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">terminal</span>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="prompt">$</span> <span class="command">locate</span> requested_page</p>
+                    <p class="output error-output">Error: File not found in /var/www/portfolio/</p>
+                    <p><span class="prompt">$</span> <span class="command">suggest</span> --help</p>
+                    <p class="output">Recommendation: Return to home directory</p>
+                    <p><span class="prompt">$</span> <span class="cursor">_</span></p>
+                </div>
+            </div>
+            
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary">
+                    <span>← Return Home</span>
+                </a>
+                <a href="/#contact" class="btn btn-secondary">
+                    <span>Report Issue</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Animated background elements -->
+        <div class="cyber-grid"></div>
+        <div class="scan-line"></div>
+    </div>
+
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-color);
+        }
+        
+        .error-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 600px;
+        }
+        
+        /* Glitch Effect */
+        .glitch-wrapper {
+            margin-bottom: 1rem;
+        }
+        
+        .glitch {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            position: relative;
+            text-shadow: 0 0 20px rgba(0, 255, 140, 0.5);
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            color: var(--accent-secondary);
+            animation: glitch-effect 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+            transform: translate(-2px, -2px);
+        }
+        
+        .glitch::after {
+            color: #ff6b6b;
+            animation: glitch-effect 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+            transform: translate(2px, 2px);
+        }
+        
+        @keyframes glitch-effect {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+        
+        @keyframes glitch-skew {
+            0% { transform: skew(0deg); }
+            20% { transform: skew(-1deg); }
+            40% { transform: skew(1deg); }
+            60% { transform: skew(0deg); }
+            80% { transform: skew(1deg); }
+            100% { transform: skew(-1deg); }
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        
+        .error-message {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        /* Terminal Box */
+        .terminal-box {
+            background: #1a1a1a;
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: left;
+            margin: 2rem 0;
+            box-shadow: 0 0 30px rgba(0, 255, 140, 0.1);
+        }
+        
+        .terminal-header {
+            background: #2a2a2a;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .terminal-dot.red { background: #ff5f57; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #28ca42; }
+        
+        .terminal-title {
+            color: #888;
+            font-size: 0.85rem;
+            margin-left: auto;
+        }
+        
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .terminal-body p {
+            margin: 0.3rem 0;
+        }
+        
+        .prompt {
+            color: var(--accent-color);
+        }
+        
+        .command {
+            color: var(--accent-secondary);
+        }
+        
+        .output {
+            color: #888;
+            padding-left: 1rem;
+        }
+        
+        .error-output {
+            color: #ff6b6b;
+        }
+        
+        .cursor {
+            animation: blink 1s step-end infinite;
+            color: var(--accent-color);
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        /* Action Buttons */
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-actions .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            color: #000;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Cyber Grid Background */
+        .cyber-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 140, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 140, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+        }
+        
+        @keyframes grid-move {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+        
+        /* Scan Line Effect */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0.5;
+            animation: scan 3s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        
+        /* Light mode adjustments */
+        :root.light-mode .terminal-box {
+            background: #f5f5f5;
+            border-color: var(--border-color);
+        }
+        
+        :root.light-mode .terminal-header {
+            background: #e8e8e8;
+            border-color: #ddd;
+        }
+        
+        :root.light-mode .terminal-body {
+            color: var(--text-color);
+        }
+        
+        :root.light-mode .output {
+            color: #666;
+        }
+        
+        @media (max-width: 600px) {
+            .glitch {
+                font-size: 5rem;
+            }
+            
+            .error-title {
+                font-size: 1.5rem;
+            }
+            
+            .terminal-body {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</BaseLayout>

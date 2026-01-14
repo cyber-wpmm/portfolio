@@ -35,4 +35,156 @@
     50% { opacity: 0.7; }
 }
 
+/* === Subtle Cyber Grid Background Animation === */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes gridPulse {
+    0%, 100% {
+        opacity: 0.04;
+    }
+    50% {
+        opacity: 0.09;
+    }
+}
+
+/* Animated gradient background layer - Full page */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 255, 140, 0.06) 25%,
+            rgba(0, 0, 0, 0) 50%,
+            rgba(0, 217, 255, 0.06) 75%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease-in-out infinite;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Enhance existing grid with subtle pulse */
+body::before {
+    animation: gridPulse 6s ease-in-out infinite;
+}
+
+/* === 1. Blinking Terminal Cursor === */
+@keyframes cursorBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.code-content::after {
+    content: '▋';
+    color: #00FF8C;
+    animation: cursorBlink 1s step-end infinite;
+    margin-left: 2px;
+    font-weight: bold;
+}
+
+/* === 2. Section Heading Underline Animation === */
+@keyframes underlineGrow {
+    from { width: 0; }
+    to { width: 60px; }
+}
+
+section h2 {
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, #00FF8C, #00D9FF);
+    border-radius: 2px;
+}
+
+section.visible h2::after {
+    animation: underlineGrow 0.6s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* === 3. Staggered Card Animations === */
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stagger-card {
+    opacity: 0;
+}
+
+section.visible .stagger-card {
+    animation: cardFadeIn 0.5s ease-out forwards;
+}
+
+section.visible .stagger-card:nth-child(1) { animation-delay: 0.1s; }
+section.visible .stagger-card:nth-child(2) { animation-delay: 0.2s; }
+section.visible .stagger-card:nth-child(3) { animation-delay: 0.3s; }
+section.visible .stagger-card:nth-child(4) { animation-delay: 0.4s; }
+section.visible .stagger-card:nth-child(5) { animation-delay: 0.5s; }
+section.visible .stagger-card:nth-child(6) { animation-delay: 0.6s; }
+section.visible .stagger-card:nth-child(7) { animation-delay: 0.7s; }
+section.visible .stagger-card:nth-child(8) { animation-delay: 0.8s; }
+
+/* === 4. Glowing Border Pulse on Hover (Scanning Effect) === */
+@keyframes scanGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(0, 255, 140, 0.3), 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 255, 140, 0.5), 0 0 30px rgba(0, 217, 255, 0.3), 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(0, 255, 140, 0.3), 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.project-card:hover,
+.cert-card:hover,
+.blog-card:hover,
+.skill-category:hover,
+.education-entry:hover,
+.timeline-content:hover {
+    animation: scanGlow 1.5s ease-in-out infinite;
+}
+
+/* === 5. Counter Animation Support === */
+.stat-number {
+    display: inline-block;
+}
+
+.stat-number.counting {
+    transition: none;
+}
+
 /* End of file - signed: serozr */

@@ -1,0 +1,11 @@
+# Robots.txt for Win Phyo Portfolio
+# https://cyberwpmm.netlify.app
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://cyberwpmm.netlify.app/sitemap.xml
+
+# Disallow admin/private paths (none currently)
+# Disallow: /admin/

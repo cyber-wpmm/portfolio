@@ -8,11 +8,84 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <meta name="description" content={description}>
+    
+    <!-- Open Graph Meta Tags for Link Previews -->
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/Images/preview.png">
+    <meta property="og:url" content="https://cyberwpmm.netlify.app/">
+    <meta property="og:site_name" content="Win Phyo - Cybersecurity Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content="/Images/og-preview.png">
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/animations.css">
+    
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
 </head>
 <body>
-    <slot />
+    <!-- Skip to Content Link (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <img src="/favicon.svg" alt="Loading..." class="preloader-logo" />
+            <div class="preloader-text">Loading<span class="dots"></span></div>
+        </div>
+    </div>
+    
+    <!-- Page Transition Overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+    
+    <main id="main-content">
+        <slot />
+    </main>
+    
+    <script is:inline>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('loaded');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }, 800);
+            }
+        });
+        
+        // Page Transitions for internal links
+        document.addEventListener('DOMContentLoaded', () => {
+            const transition = document.getElementById('pageTransition');
+            const internalLinks = document.querySelectorAll('a[href^="/"]:not([href^="/#"]):not([target="_blank"])');
+            
+            internalLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && !href.startsWith('/#') && transition) {
+                        e.preventDefault();
+                        transition.classList.add('active');
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 400);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

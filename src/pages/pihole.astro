@@ -10,6 +10,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
         <a href="/#projects" class="back-link">← Back to Projects</a>
       </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div class="nav-links" id="navLinks">
         <a href="#overview">Overview</a>
         <a href="#results">Results</a>
@@ -233,6 +238,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transition: opacity 0.3s;
   }
   .back-link:hover { opacity: 0.7; }
+  
+  @media (max-width: 768px) {
+    .back-link {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .back-link {
+      display: none;
+    }
+  }
 
   /* Hero */
   .project-hero {
@@ -635,12 +652,220 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .features-grid { grid-template-columns: 1fr; }
     .learnings-grid { grid-template-columns: 1fr; }
   }
+  
   @media (max-width: 768px) {
-    .hero-text h1 { font-size: 2.2rem; }
-    .stats-grid { grid-template-columns: 1fr; }
-    .cta-section { padding: 2.5rem 1.5rem; }
-    .cta-content h2 { font-size: 1.5rem; }
-    .tech-item img { width: 56px; height: 56px; }
+    .project-hero {
+      padding: 5rem 1rem 2rem;
+    }
+    
+    .hero-badge {
+      font-size: 0.75rem;
+      padding: 0.4rem 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-text h1 { 
+      font-size: 1.8rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-description {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-logo img { 
+      width: 150px; 
+      height: 150px;
+      padding: 1rem;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary, .btn-tertiary {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.9rem;
+    }
+    
+    .project-content {
+      padding: 0 1rem 3rem;
+    }
+    
+    .section {
+      margin-bottom: 3rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .stats-grid { 
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .stat-card {
+      padding: 1.25rem;
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+    }
+    
+    .stat-card p {
+      font-size: 0.75rem;
+    }
+    
+    .overview-card {
+      padding: 1.5rem;
+    }
+    
+    .card-icon {
+      font-size: 2rem;
+    }
+    
+    .overview-card h3 {
+      font-size: 1.05rem;
+    }
+    
+    .overview-card p {
+      font-size: 0.9rem;
+    }
+    
+    .feature-card {
+      padding: 1.25rem;
+      gap: 1rem;
+    }
+    
+    .feature-icon {
+      font-size: 1.5rem;
+    }
+    
+    .feature-card h3 {
+      font-size: 1rem;
+    }
+    
+    .feature-card p {
+      font-size: 0.85rem;
+    }
+    
+    .tech-stack {
+      gap: 1rem;
+    }
+    
+    .tech-item {
+      padding: 1.25rem 1.5rem;
+      min-width: 100px;
+    }
+    
+    .tech-item img { 
+      width: 48px; 
+      height: 48px; 
+    }
+    
+    .tech-item span {
+      font-size: 0.85rem;
+    }
+    
+    .learning-card {
+      padding: 1.5rem;
+    }
+    
+    .learning-card h3 {
+      font-size: 1rem;
+    }
+    
+    .learning-card p {
+      font-size: 0.9rem;
+    }
+    
+    .cta-section { 
+      padding: 2rem 1rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+    
+    .cta-content h2 { 
+      font-size: 1.3rem;
+    }
+    
+    .cta-content p {
+      font-size: 0.95rem;
+    }
+    
+    .dashboard-wrapper {
+      border-radius: 10px;
+    }
+    
+    .dashboard-overlay {
+      padding: 0.8rem 1rem;
+      font-size: 0.8rem;
+    }
+    
+    .scroll-top {
+      width: 44px;
+      height: 44px;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .project-hero {
+      padding: 4.5rem 0.75rem 1.5rem;
+    }
+    
+    .hero-text h1 {
+      font-size: 1.5rem;
+    }
+    
+    .hero-description {
+      font-size: 0.9rem;
+    }
+    
+    .hero-logo img {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .project-content {
+      padding: 0 0.75rem 2rem;
+    }
+    
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    
+    .stat-card {
+      padding: 1rem;
+    }
+    
+    .stat-number {
+      font-size: 1.6rem;
+    }
+    
+    .section-title {
+      font-size: 1.3rem;
+    }
+    
+    .btn-primary, .btn-secondary, .btn-tertiary {
+      padding: 0.7rem 1rem;
+      font-size: 0.85rem;
+    }
   }
 
   /* Animations */
@@ -749,6 +974,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </style>
 
 <script>
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+    
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+      });
+    });
+  }
+  
   // Scroll to top
   const scrollBtn = document.getElementById('scrollTopBtn');
   window.addEventListener('scroll', () => {

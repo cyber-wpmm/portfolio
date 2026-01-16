@@ -26,21 +26,6 @@ This experience has enhanced my skills in system administration, scripting, and 
 
 ---
 
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Prerequisites](#prerequisites)
-3. [Step 1: Initial Setup and IP Configuration](#step-1-initial-setup-and-ip-configuration)
-4. [Step 2: Setting Static IP Address](#step-2-setting-static-ip-address)
-5. [Step 3: Installing Docker](#step-3-installing-docker)
-6. [Step 4: Pi-hole Docker Setup](#step-4-pi-hole-docker-setup)
-7. [Step 5: Adding Blocklists](#step-5-adding-blocklists)
-8. [Step 6: Configuring DNS Clients](#step-6-configuring-dns-clients)
-9. [Troubleshooting](#troubleshooting)
-10. [Additional Resources](#additional-resources)
-
----
-
 ## Overview
 
 This guide covers the complete installation and configuration of Pi-hole on a Raspberry Pi using Docker. It includes:

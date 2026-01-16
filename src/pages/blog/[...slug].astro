@@ -55,10 +55,39 @@ const tocHeadings = headings.filter(h => h.depth === 2);
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-content">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <a href="/" class="logo" style="text-decoration: none; cursor: pointer; display: flex; align-items: center; gap: 0.4em;">
+                    <img src="/favicon.svg" alt="Logo" style="height: 1.7em; width: auto; vertical-align: middle; display: inline-block; margin-left: 0.1em;" />
+                </a>
+                <a href="/#blog" class="back-link">← Back to Blog</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <!-- TOC items for mobile hamburger -->
+                <div class="mobile-toc-title">On This Page</div>
+                {tocHeadings.map((heading) => (
+                    <a href={`#${heading.slug}`} class="toc-nav-link">{heading.text}</a>
+                ))}
+                <div class="nav-divider"></div>
+                <a href="/#blog">All Posts</a>
+                <a href="/#projects">Projects</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="blog-layout">
         <!-- Table of Contents Sidebar -->
         <aside class="toc-sidebar" id="tocSidebar">
             <div class="toc-container">
+                <span class="toc-title">On This Page</span>
                 <nav class="toc-nav">
                     <ul class="toc-list">
                         {tocHeadings.map((heading) => (
@@ -74,7 +103,6 @@ const tocHeadings = headings.filter(h => h.depth === 2);
         <!-- Main Article Content -->
         <article class="blog-post">
             <header class="blog-post-header">
-                <a href="/#blog" class="back-link">← Back to Blog</a>
                 <h1>{entry.data.title}</h1>
                 <div class="blog-post-meta">
                     <span class="meta-item">
@@ -219,7 +247,6 @@ const tocHeadings = headings.filter(h => h.depth === 2);
                 const scrollPos = window.scrollY + 150;
                 let currentHeading = '';
                 
-                // Find the current heading based on scroll position
                 headings.forEach((heading) => {
                     const htmlHeading = heading as HTMLElement;
                     if (htmlHeading.offsetTop <= scrollPos) {
@@ -227,12 +254,10 @@ const tocHeadings = headings.filter(h => h.depth === 2);
                     }
                 });
                 
-                // If we haven't scrolled past any heading yet, highlight the first one
                 if (!currentHeading && headings.length > 0) {
                     currentHeading = (headings[0] as HTMLElement).id;
                 }
                 
-                // Update active states
                 tocLinks.forEach(link => {
                     const href = link.getAttribute('href');
                     if (href === `#${currentHeading}`) {
@@ -244,7 +269,6 @@ const tocHeadings = headings.filter(h => h.depth === 2);
             }
             
             window.addEventListener('scroll', updateActiveToc, { passive: true });
-            // Run on load to set initial state
             setTimeout(updateActiveToc, 100);
             updateActiveToc();
         })();
@@ -394,5 +418,149 @@ const tocHeadings = headings.filter(h => h.depth === 2);
                 URL.revokeObjectURL(url);
             });
         })();
+
+        // Hamburger menu functionality
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            if (!hamburger || !navLinks) return;
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+
+            // Close menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+
+            // Close menu on outside click
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target as Node) && !navLinks.contains(e.target as Node)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+
+            // Close menu on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        })();
     </script>
+
+    <style>
+        /* Back Link - matches project pages */
+        .back-link {
+            text-decoration: none;
+            color: var(--accent-color, #00FF8C);
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+        .back-link:hover { 
+            opacity: 0.7; 
+        }
+
+        /* Hide TOC items in nav on desktop - only show in hamburger on mobile */
+        .mobile-toc-title,
+        .toc-nav-link,
+        .nav-divider {
+            display: none;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 900px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(10, 10, 20, 0.98);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 2rem 2rem;
+                transition: right 0.3s ease;
+                border-left: 1px solid rgba(0, 255, 140, 0.2);
+                overflow-y: auto;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            /* Show mobile TOC items in hamburger */
+            .mobile-toc-title {
+                display: block;
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: var(--accent-color, #00FF8C);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 0.5rem;
+                margin-top: 0.5rem;
+            }
+
+            .toc-nav-link {
+                display: block;
+                font-size: 0.85rem;
+                color: var(--text-secondary, #8b949e) !important;
+                padding: 0.5rem 0 0.5rem 1rem !important;
+                border-left: 2px solid rgba(0, 255, 140, 0.2);
+                border-bottom: none !important;
+            }
+
+            .toc-nav-link:hover {
+                color: var(--accent-color, #00FF8C) !important;
+                border-left-color: var(--accent-color, #00FF8C);
+            }
+
+            .nav-divider {
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: rgba(0, 255, 140, 0.3);
+                margin: 1rem 0;
+            }
+
+            .back-link {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .back-link {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .back-link {
+                display: none;
+            }
+        }
+    </style>
 </BaseLayout>

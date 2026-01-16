@@ -27,8 +27,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </nav>
 
   <section class="hero" id="hero">
-    <div class="hero-content" style="display: flex; align-items: center; justify-content: flex-start; gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
-      <div style="flex: 1; text-align: left;">
+    <div class="hero-content project-hero-grid">
+      <div class="project-hero-text">
         <h1>Network Performance Evaluation</h1>
         <div class="tag">// Linux Operating Systems</div>
         <p class="subtitle">Benchmarking Fedora, Ubuntu & Kali Linux as Software Routers</p>
@@ -37,11 +37,77 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <button id="viewPosterBtn" class="btn btn-secondary" style="cursor: pointer;">View Poster</button>
         </div>
       </div>
-      <div style="flex: 1; display: flex; justify-content: center;">
-        <img src="/projects/network-performance-evaluation/project-logo.png" alt="Project Logo" style="max-width: 280px; border-radius: 12px; background: #fff; padding: 1rem;" />
+      <div class="project-hero-image">
+        <img src="/projects/network-performance-evaluation/project-logo.png" alt="Project Logo" />
       </div>
     </div>
   </section>
+
+  <style>
+    .project-hero-grid {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .project-hero-text {
+      flex: 1;
+    }
+    
+    .project-hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .project-hero-image img {
+      max-width: 280px;
+      border-radius: 12px;
+      background: #fff;
+      padding: 1rem;
+    }
+    
+    @media (max-width: 900px) {
+      .project-hero-grid {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+      
+      .project-hero-image {
+        order: -1;
+      }
+      
+      .project-hero-image img {
+        max-width: 200px;
+      }
+      
+      .project-hero-text .cta-buttons {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .project-hero-grid {
+        gap: 1.5rem;
+      }
+      
+      .project-hero-image img {
+        max-width: 150px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .project-hero-image img {
+        max-width: 120px;
+        padding: 0.75rem;
+      }
+    }
+  </style>
 
   <div class="project-page">
     <!-- Project Goals -->

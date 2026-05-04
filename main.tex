@@ -1,0 +1,186 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage{lmodern}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\input{glyphtounicode}
+\usepackage[normalem]{ulem}
+\usepackage{soul}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\pdfgentounicode=1
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\large\raggedright
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+% Custom commands
+\newcommand{\resumeItem}[1]{\item\small{{#1}}}
+\newcommand{\resumeSubheading}[4]{
+  \item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}
+}
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textit{#2} \\
+    \end{tabular*}
+}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=4pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+\begin{document}
+\setlength{\footskip}{4.08003pt}
+% Header
+\begin{center}
+{\LARGE \textbf{Win Phyo (William)}} \\[10pt]
+\small
+(+64) 210 2091 022 \quad $|$ \quad
+\href{mailto:winphyo.wpmm@gmail.com}{winphyo.wpmm@gmail.com} \quad $|$ \quad
+Auckland 1010 \\[4pt]
+\href{https://www.linkedin.com/in/winphyo-it/}{\underline{linkedin.com/in/winphyo-it}} \quad $|$ \quad
+\href{https://github.com/cyber-wpmm}{\underline{github.com/cyber-wpmm}} \quad $|$ \quad
+\href{https://cyberwpmm.netlify.app/}{\underline{cyberwpmm.netlify.app}}
+\end{center}
+
+% Personal Statement
+\section{Personal Statement}
+Final-year Cybersecurity student at AUT (GPA 8.31/9.0) with hands-on experience in network defence, vulnerability assessment, and Linux/Windows system administration. Cisco CyberOps Associate and CCNA-certified, with practical exposure through CTF platforms and a self-hosted home lab. Strong communicator from customer-facing roles, comfortable solving problems under pressure. Seeking an entry-level cybersecurity role in Auckland.
+
+% Projects
+\section{Projects}
+\resumeSubHeadingListStart
+\resumeProjectHeading
+{R\&D Project -- Linux Network Performance Evaluation \textit{(Grade: A)}}{Mar 2025 -- Nov 2025}
+\resumeItemListStart
+\resumeItem{Designed and executed a structured Software Testing Life Cycle (STLC) to evaluate Linux network performance across IPv4/IPv6 using TCP and UDP traffic.}
+\resumeItem{Measured QoS metrics -- delay, jitter, throughput, and packet loss -- using the D-ITG traffic generator and decoder under varied load conditions.}
+\resumeItem{Automated packet generation, log capture, and result decoding via Bash scripting; produced graphed comparative analysis of protocol stacks.}
+\resumeItemListEnd
+\resumeProjectHeading
+{COMP607 Project -- Vulnerability Assessment \textit{(Grade: A+)}}{Jul 2024 -- Oct 2024}
+\resumeItemListStart
+\resumeItem{Conducted a full vulnerability assessment of a Windows Server 2016 target from a Kali Linux attacker VM in an isolated lab.}
+\resumeItem{Enumerated services with Nmap; exploited MySQL and HTTP misconfigurations using Metasploit; documented attack chains and remediation steps.}
+\resumeItem{Implemented symmetric cryptographic techniques to demonstrate secure transmission of sensitive data.}
+\resumeItemListEnd
+\resumeProjectHeading
+{COMP609 Project -- Windows Server and Network Setup \textit{(Grade: A+)}}{Feb 2024 -- Jun 2024}
+\resumeItemListStart
+\resumeItem{Designed a small-business network architecture with segmentation and least-privilege access principles.}
+\resumeItem{Configured Active Directory, DNS, and DHCP on Windows Server 2012R2; created OUs, Group Policies, and role-based permissions.}
+\resumeItem{Automated bulk user/group provisioning and permission assignment via PowerShell scripts, significantly reducing manual setup time.}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Bachelor of Computer and Information Sciences}{Feb 2024 -- Present}
+{Auckland University of Technology, New Zealand}{\href{https://www.myequals.net/sharelink/a3168318-7040-408c-9632-4bf1eea10924/f50c0e80-bd4f-4d62-b03e-627e3f7331ac}{{\textbf{\underline{GPA: 8.31/9.0}}}}}
+\resumeItemListStart
+\resumeItem{Major: Network and Cybersecurity \quad Minor: Artificial Intelligence}
+\resumeItem{Relevant Coursework: Network Security, Enterprise Network, Network \& System Administration, Information Security Technologies/Management, Operating Systems, IT Project Management}
+\resumeItemListEnd
+\resumeSubheading
+{Diploma of Information Technology}{Mar 2022 -- Feb 2023}
+{Griffith College, Australia}{\href{https://github.com/cyber-wpmm/Win-Academic.git}{{\textbf{\underline{GPA: 7.0/7.0}}}}}
+\resumeItemListStart
+\resumeItem{\textbf{Dux Award} for Highest GPA in Diploma of IT program (Apr 2023)}
+\resumeItem{\textbf{Commitment Award} for Academic Excellence in 1004ITC (Sep 2023)}
+\resumeItem{Relevant Coursework: Computer Systems \& Network, Professional Practice in IT, Creative Coding}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+% Skills
+\section{Technical Skills}
+\resumeSubHeadingListStart
+  \resumeItem{\textbf{Networking:} Cisco IOS (Switches/Routers), VLANs, Trunking, DHCP, OSPF, FHRP (HSRP/VRRP), ACLs, NAT, Switch Security, Subnetting}
+  \resumeItem{\textbf{Security \& Pentesting:} Vulnerability Assessment, Network Defence, Nmap, Metasploit, Wireshark, Burp Suite, John the Ripper, NetCat, CyberChef}
+  \resumeItem{\textbf{Systems \& Administration:} Active Directory, DNS, DHCP, Group Policy (GPO), Windows Server, Windows 10/11, Linux (Ubuntu, Kali, Fedora)}
+  \resumeItem{\textbf{Languages \& Scripting:} Bash, Python, PowerShell, SQL (Oracle), HTML, CSS, JavaScript, PHP}
+  \resumeItem{\textbf{Tools \& Platforms:} Docker, Git, Packet Tracer, VS Code, Jupyter, Tailscale, PiHole, Nginx Proxy Manager, n8n}
+\resumeSubHeadingListEnd
+
+% Certifications
+\section{Certifications}
+\resumeSubHeadingListStart
+\resumeSubheading
+{\href{https://www.credly.com/badges/8795b497-6f62-45b6-ab3e-139453dae7c3/public_url}{\underline{CyberOps Associate}}}{Dec 2025}
+{Cisco}{}
+\resumeSubheading
+{\href{https://www.credly.com/badges/91cf8969-2010-4ddf-a14a-4fce25c8fea8/linked_in_profile}{\underline{Network Security}}}{Nov 2025}
+{Cisco}{}
+\resumeSubheading
+{\href{https://www.credly.com/badges/ba060768-da23-4aec-907d-2b298e098bf4/linked_in_profile}{\underline{CCNA: Enterprise Networking, Security, and Automation}}}{Nov 2025}
+{Cisco}{}
+\resumeSubheading
+{\href{https://www.credly.com/badges/47a7c265-1168-4e4a-b90c-6b38c1c89fa4/public_url}{\underline{CCNA: Switching, Routing, and Wireless Essentials}}}{June 2025}
+{Cisco}{}
+\resumeSubHeadingListEnd
+
+\section{Extracurricular}
+\resumeSubHeadingListStart
+\resumeItem{\textbf{Home Lab} \\
+Self-hosting and maintaining a Docker-based services stack on Linux -- PiHole (network-wide DNS sinkhole), Nginx Proxy Manager (reverse proxy / TLS), Tailscale (mesh VPN), n8n, Syncthing, and Jellyfin. Hands-on with container networking, remote access hardening, and ongoing system maintenance.}
+\resumeItem{\textbf{CTF Platforms} \\
+Actively solving challenges on HackTheBox, TryHackMe, and OverTheWire to develop offensive security and Linux exploitation skills.}
+\resumeItem{\textbf{HackTheBox NZ Monthly Meetups \& ISIG Events} \\
+Regularly attending Auckland-based security meetups and Information Security Interest Group events to stay current on industry trends and connect with practitioners.}
+\resumeSubHeadingListEnd
+
+\section{Volunteer Experience}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {General Executive}{Aug 2025 -- Present}
+    {AUT Cyber Security \& Intelligence Club}{AUT, Auckland}
+  \resumeSubheading
+    {Seeds Holiday Program Volunteer}{Apr 2025}
+    {The Church in Auckland}{St Lukes, Auckland}
+  \resumeSubheading
+    {English Speaking Program Volunteer}{Aug 2023 -- Jan 2024}
+    {Summit Education Organization}{Yangon, Myanmar}
+\resumeSubHeadingListEnd
+
+% Experience
+\section{Work Experience}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Crew Member}{Aug 2025 -- Present}
+{McDonald's Lunn Ave}{Mt Wellington, Auckland}
+\resumeItemListStart
+\resumeItem{Operate in a high-tempo team environment, balancing accuracy and speed under sustained pressure.}
+\resumeItem{Communicate clearly across stations and with customers; recognised for reliability and consistent shift attendance.}
+\resumeItemListEnd
+\resumeSubheading
+{Kitchen \& Front of House Staff}{May 2024 -- Mar 2025}
+{Beyond Karaoke Bar}{Hobson Street, Auckland CBD}
+\resumeItemListStart
+\resumeItem{Handled front-of-house service and kitchen tasks across busy weekend shifts in a fast-paced hospitality setting.}
+\resumeItem{Resolved customer issues calmly and coordinated with the team to keep service running smoothly.}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Referees}
+Available on request.
+
+\end{document}

@@ -187,4 +187,114 @@ section.visible .stagger-card:nth-child(8) { animation-delay: 0.8s; }
     transition: none;
 }
 
+/* === 6. Rotating role tagline === */
+#role-rotator {
+    display: inline-block;
+    color: #00FF8C;
+    font-weight: 600;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    will-change: opacity, transform;
+}
+
+#role-rotator.role-out {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+
+/* Light mode tone tweak */
+.light-mode #role-rotator {
+    color: #008f4f;
+}
+
+/* === 7. Mouse-follow spotlight === */
+.cursor-spotlight {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 520px;
+    height: 520px;
+    margin-left: -260px;
+    margin-top: -260px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(
+        circle at center,
+        rgba(0, 255, 140, 0.10) 0%,
+        rgba(0, 217, 255, 0.06) 35%,
+        rgba(0, 0, 0, 0) 70%
+    );
+    transition: opacity 0.3s ease;
+    will-change: transform;
+    mix-blend-mode: screen;
+}
+
+/* Hide spotlight on touch devices and reduced motion */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+    .cursor-spotlight { display: none; }
+}
+
+/* In light mode the spotlight is too subtle — bump opacity slightly */
+.light-mode .cursor-spotlight {
+    background: radial-gradient(
+        circle at center,
+        rgba(0, 143, 79, 0.07) 0%,
+        rgba(0, 100, 160, 0.05) 35%,
+        rgba(0, 0, 0, 0) 70%
+    );
+    mix-blend-mode: multiply;
+}
+
+/* === 8. 3D Tilt cards === */
+.project-card,
+.skill-category,
+.credly-badge-wrapper {
+    transform-style: preserve-3d;
+    transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+/* Disable JS tilt fallback on reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .project-card,
+    .skill-category,
+    .credly-badge-wrapper {
+        transform: none !important;
+    }
+}
+
+/* === 9. Home Lab project card stack pills === */
+.homelab-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 255, 140, 0.08), rgba(0, 217, 255, 0.08));
+    min-height: 180px;
+    padding: 1.5rem;
+}
+
+.homelab-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.stack-pill {
+    background: rgba(0, 255, 140, 0.12);
+    color: #00FF8C;
+    border: 1px solid rgba(0, 255, 140, 0.3);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'Fira Code', monospace, sans-serif;
+}
+
+.light-mode .stack-pill {
+    background: rgba(0, 143, 79, 0.12);
+    color: #008f4f;
+    border-color: rgba(0, 143, 79, 0.3);
+}
+
 /* End of file - signed: serozr */

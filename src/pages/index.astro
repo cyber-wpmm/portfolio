@@ -53,7 +53,7 @@ const latestPosts = allPosts
         <div class="hero-content">
             <h1><span id="typed-name"></span></h1>
             <div class="tag">// cybersecurity student & network specialist</div>
-            <p class="subtitle">Final Year Cybersecurity Student @ AUT</p>
+            <p class="subtitle">Aspiring <span id="role-rotator">SOC Analyst</span></p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-secondary">View Projects</a>
                 <a href="#contact" class="btn btn-tertiary">Get In Touch</a>
@@ -81,7 +81,7 @@ const latestPosts = allPosts
             <div class="about-content fade-in">
                 <div class="about-text">
                     <p class="about-intro">
-                    Hi! I'm <span class="highlight">Win Phyo</span>, a passionate final-year Cybersecurity student at AUT, eager to apply my skills in network security and system administration developed through academic projects, CTF competitions, and hands-on practical labs. My collaborative experience in customer-oriented industries has strengthened my communication skills and ability to solve problems under pressure. <span class="about-sign">— Win Phyo</span>
+                    Hi! I'm <span class="highlight">Win Phyo</span> — a final-year Cybersecurity student at AUT (GPA <strong>8.31/9.0</strong>) with hands-on experience in network defence, vulnerability assessment, and Linux/Windows system administration. Cisco <strong>CyberOps Associate</strong> and <strong>CCNA</strong>-certified, with practical exposure through CTF platforms and a self-hosted home lab. Strong communicator from customer-facing roles — comfortable solving problems under pressure. <span class="about-sign">— Win Phyo</span>
                     </p>
                     <div class="about-stats">
                         <div class="stat-item">
@@ -139,24 +139,59 @@ const latestPosts = allPosts
                     <h3 class="skill-title">Networking</h3>
                 </div>
                 <div class="skill-tags">
-                    <span class="skill-tag">Cisco</span>
+                    <span class="skill-tag">Cisco IOS</span>
                     <span class="skill-tag">VLANs</span>
-                    <span class="skill-tag">Routing</span>
-                    <span class="skill-tag">Firewalls</span>
+                    <span class="skill-tag">OSPF</span>
+                    <span class="skill-tag">FHRP</span>
+                    <span class="skill-tag">ACLs</span>
                     <span class="skill-tag">NAT/DHCP</span>
-                    <span class="skill-tag">TCP/IP</span>
+                    <span class="skill-tag">Switch Security</span>
                 </div>
             </div>
 
-            <!-- Languages -->
+            <!-- Security & Pentesting -->
+            <div class="skill-category card-hover stagger-card">
+                <div class="skill-header">
+                    <img src="https://img.icons8.com/?size=100&id=48489&format=png&color=00FF8C" alt="Security" class="skill-icon-img" />
+                    <h3 class="skill-title">Security & Pentesting</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Nmap</span>
+                    <span class="skill-tag">Metasploit</span>
+                    <span class="skill-tag">Wireshark</span>
+                    <span class="skill-tag">Burp Suite</span>
+                    <span class="skill-tag">John the Ripper</span>
+                    <span class="skill-tag">NetCat</span>
+                    <span class="skill-tag">CyberChef</span>
+                </div>
+            </div>
+
+            <!-- Systems & Admin -->
+            <div class="skill-category card-hover stagger-card">
+                <div class="skill-header">
+                    <img src="https://img.icons8.com/?size=100&id=2171&format=png&color=00FF8C" alt="Systems" class="skill-icon-img" />
+                    <h3 class="skill-title">Systems & Admin</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Active Directory</span>
+                    <span class="skill-tag">Group Policy</span>
+                    <span class="skill-tag">Windows Server</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">DNS</span>
+                    <span class="skill-tag">DHCP</span>
+                </div>
+            </div>
+
+            <!-- Languages & Scripting -->
             <div class="skill-category card-hover stagger-card">
                 <div class="skill-header">
                     <img src="https://img.icons8.com/?size=100&id=47729&format=png&color=00FF8C" alt="Programming" class="skill-icon-img" />
-                    <h3 class="skill-title">Languages</h3>
+                    <h3 class="skill-title">Languages & Scripting</h3>
                 </div>
                 <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
                     <span class="skill-tag">Bash</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PowerShell</span>
                     <span class="skill-tag">SQL</span>
                     <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">HTML/CSS</span>
@@ -164,34 +199,19 @@ const latestPosts = allPosts
                 </div>
             </div>
 
-            <!-- Security Tools -->
+            <!-- Tools & Platforms -->
             <div class="skill-category card-hover stagger-card">
                 <div class="skill-header">
-                    <img src="https://img.icons8.com/?size=100&id=48489&format=png&color=00FF8C" alt="Security" class="skill-icon-img" />
-                    <h3 class="skill-title">Security Tools</h3>
+                    <img src="https://img.icons8.com/?size=100&id=11997&format=png&color=00FF8C" alt="Tools" class="skill-icon-img" />
+                    <h3 class="skill-title">Tools & Platforms</h3>
                 </div>
                 <div class="skill-tags">
-                    <span class="skill-tag">Nmap</span>
-                    <span class="skill-tag">Metasploit</span>
-                    <span class="skill-tag">Wireshark</span>
-                    <span class="skill-tag">Burp Suite</span>
-                    <span class="skill-tag">Hashcat</span>
-                    <span class="skill-tag">Netcat</span>
-                </div>
-            </div>
-
-            <!-- Developer Tools -->
-            <div class="skill-category card-hover stagger-card">
-                <div class="skill-header">
-                    <img src="https://img.icons8.com/?size=100&id=2171&format=png&color=00FF8C" alt="Dev Tools" class="skill-icon-img" />
-                    <h3 class="skill-title">Dev Tools</h3>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
                     <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">VS Code</span>
-                    <span class="skill-tag">Linux</span>
-                    <span class="skill-tag">Jupyter</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Tailscale</span>
+                    <span class="skill-tag">PiHole</span>
+                    <span class="skill-tag">Nginx Proxy Manager</span>
+                    <span class="skill-tag">n8n</span>
                     <span class="skill-tag">Packet Tracer</span>
                 </div>
             </div>
@@ -248,6 +268,29 @@ const latestPosts = allPosts
                     </div>
                 </div>
             </div>
+
+            <div class="project-card stagger-card">
+                <div class="project-badge">
+                    <img src="https://img.icons8.com/?size=100&id=cdYUlRaag9G9&format=png&color=00FF8C" alt="Home Lab" />
+                </div>
+                <div class="project-card-media homelab-media">
+                    <div class="homelab-stack">
+                        <span class="stack-pill">PiHole</span>
+                        <span class="stack-pill">Nginx PM</span>
+                        <span class="stack-pill">Tailscale</span>
+                        <span class="stack-pill">n8n</span>
+                        <span class="stack-pill">Syncthing</span>
+                        <span class="stack-pill">Jellyfin</span>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <h3>Self-Hosted Home Lab</h3>
+                    <p>Docker-based services stack on Linux — DNS sinkhole, reverse proxy with TLS, mesh VPN, automation, file sync, and media. Hands-on container networking and remote-access hardening.</p>
+                    <div class="project-card-footer">
+                        <a href="https://github.com/cyber-wpmm" target="_blank" rel="noopener" class="project-link btn btn-secondary">View on GitHub →</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -299,7 +342,7 @@ const latestPosts = allPosts
                         </div>
                     </div>
                     <p class="timeline-description">
-                        <!-- Description to be added -->
+                        Helping organise events and outreach for AUT's Cyber Security & Intelligence Club — supporting workshops, member engagement, and connections between students and industry professionals.
                     </p>
                 </div>
             </div>
@@ -358,7 +401,7 @@ const latestPosts = allPosts
                 <h3>Bachelor of Computer and Information Sciences</h3>
                 <div class="education-school">Auckland University of Technology, New Zealand</div>
                 <div class="education-date">Feb 2024 – Present</div>
-                <div class="education-gpa"><span class="gpa-highlight">GPA: 8.18/9.0</span></div>
+                <div class="education-gpa"><span class="gpa-highlight">GPA: 8.31/9.0</span></div>
                 <ul class="education-details">
                     <li><strong>🌐 Major:</strong> Network and Cybersecurity</li>
                     <li><strong>🤖 Minor:</strong> Artificial Intelligence</li>
@@ -423,7 +466,7 @@ const latestPosts = allPosts
                     <h3>Switching, Routing & Wireless</h3>
                     <p>Fundamental networking essentials for scalable networks</p>
                     <span class="cert-date">Jul 2025</span>
-                    <button class="cert-pdf-btn" data-pdf="/Certificates/ccan-switching-certificate.pdf" data-index="3">View PDF →</button>
+                    <button class="cert-pdf-btn" data-pdf="/Certificates/ccna-switching-certificate.pdf" data-index="3">View PDF →</button>
                 </div>
             </div>
         </div>
@@ -455,7 +498,7 @@ const latestPosts = allPosts
                 { url: '/Certificates/ccna-cyberops-certificate.pdf', title: 'CyberOps Associate' },
                 { url: '/Certificates/ccna-network-security-certificate.pdf', title: 'Network Security' },
                 { url: '/Certificates/ccna-enterprise-network-certificate.pdf', title: 'Enterprise Networking' },
-                { url: '/Certificates/ccan-switching-certificate.pdf', title: 'Switching, Routing & Wireless' }
+                { url: '/Certificates/ccna-switching-certificate.pdf', title: 'Switching, Routing & Wireless' }
             ];
             
             let currentIndex = 0;
@@ -649,6 +692,61 @@ const latestPosts = allPosts
                 }
             }
             window.addEventListener('DOMContentLoaded', typeOnce);
+
+            // === Rotating role tagline ===
+            (function() {
+                const roles = [
+                    'SOC Analyst',
+                    'Network Engineer',
+                    'Penetration Tester',
+                    'Security Engineer'
+                ];
+                const el = document.getElementById('role-rotator');
+                if (!el) return;
+                let r = 0;
+                function swap() {
+                    el.classList.add('role-out');
+                    setTimeout(() => {
+                        r = (r + 1) % roles.length;
+                        el.textContent = roles[r];
+                        el.classList.remove('role-out');
+                    }, 350);
+                }
+                setInterval(swap, 2600);
+            })();
+
+            // === Mouse-follow spotlight ===
+            (function() {
+                const spot = document.createElement('div');
+                spot.className = 'cursor-spotlight';
+                document.body.appendChild(spot);
+                let raf = null, x = 0, y = 0;
+                window.addEventListener('pointermove', (e) => {
+                    x = e.clientX; y = e.clientY;
+                    if (raf) return;
+                    raf = requestAnimationFrame(() => {
+                        spot.style.transform = `translate(${x}px, ${y}px)`;
+                        raf = null;
+                    });
+                }, { passive: true });
+            })();
+
+            // === 3D tilt on project + skill cards ===
+            (function() {
+                const targets = document.querySelectorAll('.project-card, .skill-category, .credly-badge-wrapper');
+                const max = 8; // max tilt deg
+                targets.forEach(card => {
+                    card.addEventListener('pointermove', (e) => {
+                        const r = card.getBoundingClientRect();
+                        const px = (e.clientX - r.left) / r.width - 0.5;
+                        const py = (e.clientY - r.top) / r.height - 0.5;
+                        card.style.transform = `perspective(800px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg) translateZ(0)`;
+                    });
+                    card.addEventListener('pointerleave', () => {
+                        card.style.transform = '';
+                    });
+                });
+            })();
         </script>
 
         <!-- Education PDF Modal (Griffith Documents) -->
